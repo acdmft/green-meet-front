@@ -8,14 +8,22 @@ function LoginForm() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="email">Email</label>
         <input
+          name="email"
           {...register("email", {
             required: true,
             maxLength: 150,
             pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i,
           })}
         />
-        <input {...register("lastName", { required: true, minLength: 6 })} />
+        <label htmlFor="password">Password</label>
+
+        <input
+          type="password"
+          name="password"
+          {...register("password", { required: true, minLength: 6 })}
+        />
         <input type="submit" />
       </form>
     </div>

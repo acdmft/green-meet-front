@@ -1,6 +1,7 @@
 import React from "react";
 import ActionCard from "./components/ActionCard";
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 // Views
 import Homepage from "./views/Homepage";
@@ -10,7 +11,6 @@ function App() {
     <div>
       <Homepage />
       <ActionCard />
-      <LoginForm />
     </div>
   );
 }
