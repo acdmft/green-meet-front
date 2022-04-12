@@ -1,9 +1,10 @@
 import React from "react";
+import Title from "../components/Title";
 
 function Homepage() {
   return (
     <div>
-      <h1>Green Meet, les rencontres écolos</h1>
+      <Title />
       <img></img>
       <h3>Qu'est-ce que Green Meet ?</h3>
       <p>
