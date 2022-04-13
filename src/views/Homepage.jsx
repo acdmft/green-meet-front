@@ -12,10 +12,10 @@ function Homepage() {
           alt="Balais"
           className="h-72 md:h-80 w-full md:w-5/6 lg:h-96 mx-auto"
         />
-        <h3 className="m-3 text-gmgreen font-bold text-lg" id="contenu">
+        <h3 className="my-7 mx-12 text-gmgreen font-bold text-lg" id="contenu">
           Qu'est-ce que Green Meet ?
         </h3>
-        <p className="mx-3 text-justify">
+        <p className="mx-12 text-justify">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
           illo, porro id voluptatum illum est dignissimos exercitationem.
           Expedita, quas pariatur! Aliquid ducimus commodi ipsam. Culpa minima
@@ -35,10 +35,12 @@ function Homepage() {
           eius!
         </p>
       </div>
-      <div className="flex flex-row">
-        <ActionCard />
-        <ActionCard />
-        <ActionCard />
+      <div className="flex justify-center">
+        <div className="grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <ActionCard />
+          <ActionCard />
+          <ActionCard />
+        </div>
       </div>
     </>
   );

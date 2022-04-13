@@ -28,18 +28,22 @@ function App() {
   };
   return (
     <BrowserRouter classname="relative">
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Homepage />} />
-        <Route path="/actions" element={<ActionsList />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/contributors" element={<Contributors />} />
-        <Route path="/mentions" element={<Mentions />} />
-        <Route path="/contact" element={<ContactAdmin />} />
-        <Route path="/action" element={<ActionDetails />} />
-      </Routes>
-      <Footer classname="absolute inset-x-0 bottom-0" />
+      <div className="flex flex-col justify-between min-h-screen">
+        <NavBar />
+        <div className="flex-grow">
+          <Routes>
+            <Route exact path="/" element={<Homepage />} />
+            <Route path="/actions" element={<ActionsList />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/contributors" element={<Contributors />} />
+            <Route path="/mentions" element={<Mentions />} />
+            <Route path="/contact" element={<ContactAdmin />} />
+            <Route path="/action" element={<ActionDetails />} />
+          </Routes>
+        </div>
+        <Footer classname="absolute inset-x-0 bottom-0" />
+      </div>
     </BrowserRouter>
   );
 }
