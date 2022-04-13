@@ -1,7 +1,11 @@
 import React from "react";
 
 function Footer() {
-  return <div className="">{navLinks}</div>;
+  return (
+    <div className="text-center m-6">
+      <div className="space-x-12">{navLinks}</div>
+    </div>
+  );
 }
 
 const pages = [
@@ -12,7 +16,11 @@ const pages = [
 
 const navLinks = pages.map((page) => {
   return (
-    <a key={page} href={page.href} className="">
+    <a
+      key={page}
+      href={page.href}
+      className="text-gmkaki font-semibold hover:text-gray-600"
+    >
       {page.name}
     </a>
   );

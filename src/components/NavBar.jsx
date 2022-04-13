@@ -3,7 +3,7 @@ import { React, useState } from "react";
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="">
+    <div className="sticky top-0 bg-white">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       {menuOpen && (
         <MobileMenu>

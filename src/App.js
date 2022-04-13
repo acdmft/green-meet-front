@@ -22,7 +22,7 @@ import ContactAdmin from "./views/ContactAdmin";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter classname="relative">
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
@@ -33,7 +33,7 @@ function App() {
         <Route path="/mentions" element={<Mentions />} />
         <Route path="/contact" element={<ContactAdmin />} />
       </Routes>
-      <Footer />
+      <Footer classname="absolute inset-x-0 bottom-0" />
     </BrowserRouter>
   );
 }
