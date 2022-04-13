@@ -6,15 +6,26 @@ import NavBar from "./components/NavBar";
 import RegisterForm from "./components/RegisterForm";
 import ContactAdmin from "./views/ContactAdmin";
 
+// React-router-dom
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 // Views
 import Homepage from "./views/Homepage";
+import ActionsList from "./views/ActionsList";
+import Login from "./views/Login";
+import Register from "./views/Register";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <NavBar />
-      <Homepage />
-    </div>
+      <Routes>
+        <Route exact path="/" element={<Homepage />} />
+        <Route path="/actions" element={<ActionsList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
