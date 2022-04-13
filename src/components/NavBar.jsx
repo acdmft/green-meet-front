@@ -50,7 +50,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => (
     <div className="flex items-center">
       <img src="../../img/logo1.png" className="h-10 w-10" />
       <a
-        href="/homepage"
+        href="/"
         className="text-xl font-bold no-underline text-gmgreen-dark hover:text-gray-600"
       >
         Green Meet

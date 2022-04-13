@@ -19,8 +19,13 @@ import Footer from "./components/Footer";
 import Contributors from "./views/Contributors";
 import Mentions from "./views/Mentions";
 import ContactAdmin from "./views/ContactAdmin";
+import Button from "./components/Button";
+import ActionDetails from "./views/ActionDetails";
 
 function App() {
+  const handleClick = () => {
+    console.log("COUCOU");
+  };
   return (
     <BrowserRouter classname="relative">
       <NavBar />
@@ -32,6 +37,7 @@ function App() {
         <Route path="/contributors" element={<Contributors />} />
         <Route path="/mentions" element={<Mentions />} />
         <Route path="/contact" element={<ContactAdmin />} />
+        <Route path="/action" element={<ActionDetails />} />
       </Routes>
       <Footer classname="absolute inset-x-0 bottom-0" />
     </BrowserRouter>

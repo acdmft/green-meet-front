@@ -1,6 +1,12 @@
-import React from "react";
+import { React } from "react";
+import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function ActionCard() {
+  let navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/action");
+  };
   return (
     <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-5">
       <a href="#">
@@ -14,7 +20,7 @@ function ActionCard() {
         omnis vitae voluptatem consequuntur magnam exercitationem nemo nisi odio
         recusandae.
       </p>
-      <a
+      {/* <a
         href="#"
         class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
@@ -31,7 +37,8 @@ function ActionCard() {
             clip-rule="evenodd"
           ></path>
         </svg>
-      </a>
+      </a> */}
+      <Button onClick={handleClick}>Voir plus</Button>
     </div>
   );
 }
