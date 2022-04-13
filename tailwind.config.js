@@ -3,8 +3,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gmkaki: "#5d7963",
-        gmgreen: "#698020",
+        gmkaki: "rgba(94, 121, 100, 1)",
+        gmgreen: {
+          light: "rgba(82, 99, 90, 1)",
+          medium: "rgba(55, 66, 58, 1)",
+          dark: "rgba(43, 44, 45, 1)",
+        },
+        gmlime: {
+          light: "rgba(148, 174, 65, 1)",
+          dark: "rgba(105, 127, 40, 1)",
+        },
       },
     },
   },

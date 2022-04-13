@@ -3,7 +3,7 @@ import { React, useState } from "react";
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="bg-gradient-to-r from-gmgreen to-gmkaki text-white">
+    <div className="">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       {menuOpen && (
         <MobileMenu>
@@ -29,7 +29,7 @@ const connexionLinks = [
 const navLinks = pages.map((page) => (
   <a
     key={page}
-    className="no-underline text-gray-800 font-semibold hover:text-gray-600"
+    className="no-underline text-gmkaki font-semibold hover:text-gray-600"
     href={page.href}
   >
     {page.name}
@@ -38,7 +38,7 @@ const navLinks = pages.map((page) => (
 const navConnexion = connexionLinks.map((cl) => (
   <a
     key={cl}
-    className="no-underline text-gray-800 font-semibold hover:text-gray-600"
+    className="no-underline text-gmkaki font-semibold hover:text-gray-600"
     href={cl.href}
   >
     {cl.name}
@@ -48,17 +48,19 @@ const navConnexion = connexionLinks.map((cl) => (
 const Navbar = ({ menuOpen, setMenuOpen }) => (
   <div className="flex items-center justify-between p-4">
     <div className="flex items-center">
-      {/* <FireSvg /> */}
+      <img src="../../img/logo1.png" className="h-10 w-10" />
       <a
-        href="#home"
-        className="text-xl font-bold no-underline text-gray-800 hover:text-gray-600"
+        href="/homepage"
+        className="text-xl font-bold no-underline text-gmgreen-dark hover:text-gray-600"
       >
         Green Meet
       </a>
     </div>
-    <nav className="hidden md:block space-x-6">
-      <div>{navLinks}</div>
-      <div>{navConnexion}</div>
+    <nav className="hidden md:block">
+      <div className="flex flex-row space-x-16 text-gmgreen-light">
+        <div className="space-x-6">{navLinks}</div>
+        <div className="space-x-6">{navConnexion}</div>
+      </div>
     </nav>
     <button
       type="button"
