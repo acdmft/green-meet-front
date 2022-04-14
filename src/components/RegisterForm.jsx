@@ -1,45 +1,103 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "./Button";
 
 function RegisterForm() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const onSubmit = (data) => console.log(data);
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          {...register("email", {
-            required: true,
-            maxLength: 150,
-            pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i,
-          })}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          {...register("password", { required: true, minLength: 6 })}
-        />
-        <label htmlFor="confirmPassword">Confirm Password</label>
-
-        <input
-          type="password"
-          name="confirmPassword"
-          {...register("confirmPassword", { required: true, minLength: 6 })}
-        />
-        <label htmlFor="lastName">Lastname</label>
-        <input name="lastName" {...register("lastName", { required: true })} />
-        <label htmlFor="firstName">Firstname</label>
-        <input
-          name="firstName"
-          {...register("firstName", { required: true })}
-        />
-        <label htmlFor="city">City</label>
-        <input name="city" {...register("city", { required: true })} />
-        <input type="submit" />
+      <form
+        className="flex flex-col mx-auto items-center"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="grid grid-rows-3 grid-flow-col gap-4 md:w-1/2 mb-12 space-x-8">
+          <div className="flex flex-col pl-8">
+            <label htmlFor="email">Email</label>
+            <input
+              name="email"
+              className="border-2"
+              {...register("email", {
+                required: true,
+                maxLength: 100,
+                pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i,
+              })}
+            />
+            {errors.email && (
+              <span className="w-full text-red-600 italic text-xs">
+                Please enter a valid email
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="password">Password</label>
+            <input
+              className="border-2"
+              type="password"
+              name="password"
+              {...register("password", { required: true, minLength: 6 })}
+            />
+            {errors.password && (
+              <span className="w-full text-red-600 italic text-xs">
+                Please enter a valid password
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              className="border-2"
+              type="password"
+              name="confirmPassword"
+              {...register("confirmPassword", { required: true, minLength: 6 })}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="lastName">Lastname</label>
+            <input
+              className="border-2"
+              name="lastName"
+              {...register("lastName", { required: true })}
+            />
+            {errors.lastName && (
+              <span className="w-full text-red-600 italic text-xs">
+                Champs obligatoire
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="firstName">Firstname</label>
+            <input
+              className="border-2"
+              name="firstName"
+              {...register("firstName", { required: true })}
+            />
+            {errors.firstName && (
+              <span className="w-full text-red-600 italic text-xs">
+                Champs obligatoire
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="city">City</label>
+            <input
+              className="border-2"
+              name="city"
+              {...register("city", { required: true })}
+            />
+            {errors.city && (
+              <span className="w-full text-red-600 italic text-xs">
+                Champs obligatoire
+              </span>
+            )}
+          </div>
+        </div>
+        <Button type="submit">S'enregistrer</Button>
       </form>
     </div>
   );

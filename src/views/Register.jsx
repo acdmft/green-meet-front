@@ -6,7 +6,7 @@ function Register() {
   return (
     <div>
       <Title />
-      <h3>S'enregistrer</h3>
+      <h3 className="text-center my-6">S'enregistrer</h3>
       <RegisterForm />
     </div>
   );
