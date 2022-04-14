@@ -56,7 +56,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => (
         Green Meet
       </a>
     </div>
-    <nav className="hidden md:block">
+    <nav className="hidden lg:block">
       <div className="flex flex-row space-x-16 text-gmgreen-light">
         <div className="space-x-6">{navLinks}</div>
         <div className="space-x-6">{navConnexion}</div>
@@ -66,7 +66,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => (
       type="button"
       aria-label="Toggle mobile menu"
       onClick={() => setMenuOpen(!menuOpen)}
-      className="rounded md:hidden focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50"
+      className="rounded lg:hidden focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50"
     >
       <MenuAlt4Svg menuOpen={menuOpen} />
     </button>
@@ -74,7 +74,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => (
 );
 
 const MobileMenu = ({ children }) => (
-  <nav className="p-4 flex flex-col space-y-3 md:hidden">{children}</nav>
+  <nav className="p-4 flex flex-col space-y-3 lg:hidden">{children}</nav>
 );
 
 // const FireSvg = () => (
