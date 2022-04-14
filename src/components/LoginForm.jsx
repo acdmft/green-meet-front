@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { useForm } from "react-hook-form";
+import Button from "./Button";
 
 function LoginForm() {
   const {
@@ -25,9 +26,17 @@ function LoginForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col w-2/3 sm:1/2 md:w-1/3 mx-auto items-center h-1/2 space-y-6"
+      >
         <input
-          {...register("email", { required: true, maxLength: 150 })}
+          className="w-full border border-2 h-8"
+          {...register("email", {
+            required: true,
+            maxLength: 150,
+            minLength: 5,
+          })}
           type="text"
           name="email"
           id="email"
@@ -35,8 +44,13 @@ function LoginForm() {
           // value={localStorage.getItem("email")}
         />
         {/* Message d'erreur si input invalide : */}
-        {errors.email && <span>Please enter a valid email</span>}
+        {errors.email && (
+          <span className="w-full text-red-600 italic text-xs">
+            Please enter a valid email
+          </span>
+        )}
         <input
+          className="w-full border border-2 h-8"
           {...register("password", { required: true, maxLength: 6 })}
           type="password"
           name="password"
@@ -44,7 +58,11 @@ function LoginForm() {
           placeholder="Password"
         />
         {/* Message d'erreur si input invalide : */}
-        {errors.password && <span>Please enter a valid password</span>}
+        {errors.password && (
+          <span className="w-full text-red-600 italic text-xs">
+            Please enter a valid password
+          </span>
+        )}
         {/* <div className="container">
           <input
             {...register("checkbox")}
@@ -58,7 +76,9 @@ function LoginForm() {
           </label>
         </div> */}
 
-        <button type="submit">Login</button>
+        <Button type="submit" className="w-full mt-6">
+          Se connecter
+        </Button>
       </form>
     </div>
   );

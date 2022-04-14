@@ -1,5 +1,5 @@
 import { React } from "react";
-import Button from "./Button";
+import ArrowButton from "./ArrowButton";
 import { useNavigate } from "react-router-dom";
 
 function ActionCard() {
@@ -39,7 +39,7 @@ function ActionCard() {
           ></path>
         </svg>
       </a> */}
-        <Button onClick={handleClick}>Voir plus</Button>
+        <ArrowButton onClick={handleClick}>Voir plus</ArrowButton>
       </div>
     </div>
   );
