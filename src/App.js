@@ -43,7 +43,7 @@ function App() {
             <Route path="/action" element={<ActionDetails />} />
           </Routes>
         </div>
-        <Footer classname="absolute inset-x-0 bottom-0" />
+        <Footer classname="flex flex-row" />
       </div>
     </BrowserRouter>
   );
