@@ -2,7 +2,7 @@ import { React } from "react";
 import ArrowButton from "./ArrowButton";
 import { useNavigate } from "react-router-dom";
 
-function ActionCard() {
+function ActionCard(props) {
   let navigate = useNavigate();
   const handleClick = () => {
     navigate("/action");
@@ -12,14 +12,11 @@ function ActionCard() {
       <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-5">
         <a href="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Nettoyage du Canal saint Martin
+            {props.title}
           </h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi quam
-          eveniet minima error! Eum tempore quod provident tempora, delectus ad
-          omnis vitae voluptatem consequuntur magnam exercitationem nemo nisi
-          odio recusandae.
+          {props.description}
         </p>
         {/* <a
         href="#"

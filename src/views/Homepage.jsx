@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ActionCard from "../components/ActionCard";
 import Title from "../components/Title";
 
 function Homepage() {
+  const [actions, setActions] = useState([]);
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((res) => {
+        setActions(res);
+      });
+  }, []);
   return (
     <>
       <div>
@@ -37,9 +45,15 @@ function Homepage() {
       </div>
       <div className="flex justify-center">
         <div className="grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <ActionCard />
-          <ActionCard />
-          <ActionCard />
+          {actions.slice(0, 3).map((action) => {
+            return (
+              <ActionCard
+                key={action.name}
+                title={action.name.common}
+                description={action.altSpellings}
+              />
+            );
+          })}
         </div>
       </div>
     </>
