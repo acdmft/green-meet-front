@@ -17,7 +17,7 @@ function ActionsList() {
   } = useForm();
 
   const onSubmit = (data) => {
-    setUserInput(data.city);
+    setUserInput(data.city.toLowerCase());
   };
 
   useEffect(() => {
@@ -38,32 +38,27 @@ function ActionsList() {
       });
   }, []);
 
-  function RenderActions() {
-    actions.slice(0, 12).map((action) => {
-      return (
+  const RenderActions = () => {
+    return actions
+      .slice(0, 12)
+      .map((action) => (
         <ActionCard
           key={action.name}
           title={action.name.common}
           description={action.altSpellings}
         />
-      );
-    });
-  }
+      ));
+  };
 
-  function RenderFilteredActions() {
-    filteredActions.map((action) => {
-      return (
-        <ActionCard
-          key={action.name}
-          title={action.name}
-          description={action.altSpellings}
-        />
-      );
-    });
-  }
-
-  console.log(actions);
-  //
+  const RenderFilteredActions = () => {
+    return filteredActions.map((action) => (
+      <ActionCard
+        key={action.name}
+        title={action.name.common}
+        description={action.altSpellings}
+      />
+    ));
+  };
 
   return (
     <div className="flex flex-col justify-center">
@@ -100,9 +95,29 @@ function ActionsList() {
           </Button>
         </form>
       </div>
-      <div className="grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {/* {filteredActions === undefined ? ( */}
-        {actions.length !== 0 && RenderActions()}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        {/* {filteredActions.length === 0
+          ? actions.slice(0, 12).map((action) => {
+              return (
+                <ActionCard
+                  key={action.name}
+                  title={action.name.common}
+                  description={action.altSpellings}
+                />
+              );
+            })
+          : filteredActions.map((action) => {
+              return (
+                <ActionCard
+                  key={action.name}
+                  title={action.name.common}
+                  description={action.altSpellings}
+                />
+              );
+            })} */}
+        {filteredActions.length === 0
+          ? RenderActions()
+          : RenderFilteredActions()}
       </div>
     </div>
   );
