@@ -96,25 +96,6 @@ function ActionsList() {
         </form>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {/* {filteredActions.length === 0
-          ? actions.slice(0, 12).map((action) => {
-              return (
-                <ActionCard
-                  key={action.name}
-                  title={action.name.common}
-                  description={action.altSpellings}
-                />
-              );
-            })
-          : filteredActions.map((action) => {
-              return (
-                <ActionCard
-                  key={action.name}
-                  title={action.name.common}
-                  description={action.altSpellings}
-                />
-              );
-            })} */}
         {filteredActions.length === 0
           ? RenderActions()
           : RenderFilteredActions()}
