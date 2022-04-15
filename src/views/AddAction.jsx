@@ -175,7 +175,7 @@ function AddAction() {
             </div>
 
             {/* DESCRIPTION */}
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
               <label htmlFor="description">Description</label>
               <textarea
                 rows="12"
@@ -190,7 +190,7 @@ function AddAction() {
               />
 
               {errors.description && (
-                <span className="w-full text-red-600 italic text-xs">
+                <span className="w-full text-red-600 italic text-xs absolute top-80">
                   Merci d'indiquer une description complète
                 </span>
               )}
