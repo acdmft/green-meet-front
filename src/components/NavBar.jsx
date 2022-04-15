@@ -21,6 +21,7 @@ const pages = [
   { name: "Aller au contenu", href: "#contenu" },
   { name: "Accueil", href: "/" },
   { name: "Les actions", href: "/actions" },
+  { name: "Créer mon action", href: "/addAction" },
 ];
 const connexionLinks = [
   { name: "Connexion", href: "/login" },

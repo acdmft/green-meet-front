@@ -1,11 +1,9 @@
-import { React, useState, useContext } from "react";
+import { React, useContext } from "react";
 
 // Components
-import ActionCard from "./components/ActionCard";
-import ContactForm from "./components/ContactForm";
-import LoginForm from "./components/LoginForm";
+
 import NavBar from "./components/NavBar";
-import RegisterForm from "./components/RegisterForm";
+import Footer from "./components/Footer";
 
 // React-router-dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,13 +13,11 @@ import Homepage from "./views/Homepage";
 import ActionsList from "./views/ActionsList";
 import Login from "./views/Login";
 import Register from "./views/Register";
-import Footer from "./components/Footer";
 import Contributors from "./views/Contributors";
 import Mentions from "./views/Mentions";
 import ContactAdmin from "./views/ContactAdmin";
-import Button from "./components/ArrowButton";
-import ArrowButton from "./components/ArrowButton";
 import ActionDetails from "./views/ActionDetails";
+import AddAction from "./views/AddAction";
 
 function App() {
   const handleClick = () => {
@@ -41,9 +37,10 @@ function App() {
             <Route path="/mentions" element={<Mentions />} />
             <Route path="/contact" element={<ContactAdmin />} />
             <Route path="/action" element={<ActionDetails />} />
+            <Route path="/addAction" element={<AddAction />} />
           </Routes>
         </div>
-        <Footer classname="flex flex-row" />
+        <Footer />
       </div>
     </BrowserRouter>
   );
