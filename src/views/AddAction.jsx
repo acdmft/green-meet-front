@@ -19,11 +19,11 @@ function AddAction() {
       <div className="mt-16">
         {/* FORM */}
         <form
-          className="flex flex-col mx-auto items-center "
+          className="flex flex-col sm:mx-10 items-center mx-3"
           onSubmit={handleSubmit(onSubmit)}
         >
           {/* Titre */}
-          <div className="w-4/5 gap-4 lg:w-1/2 mb-10 space-y-4 md:space-y-10">
+          <div className="w-full gap-4 lg:w-1/2 mb-10 space-y-10">
             <div className="flex flex-col relative">
               <label htmlFor="title">Titre de l'action</label>
               <input
@@ -43,11 +43,11 @@ function AddAction() {
             </div>
 
             {/* Adresse */}
-            <div className="space-y-2 border-2 p-4 bg-gray-100 py-10">
+            <div className="space-y-6 border-2 p-4 bg-gray-100 py-10">
               <div className="space-y-2 relative">
                 <label
                   htmlFor="adress"
-                  className="font-bold absolute bottom-16"
+                  className="font-bold absolute md:bottom-16 bottom-32"
                 >
                   Adresse
                 </label>
@@ -97,7 +97,7 @@ function AddAction() {
                         {...register("streetName", { required: true })}
                       />
                       {errors.streetName && (
-                        <span className="mt-0 w-full text-red-600 italic text-xs absolute top-14">
+                        <span className="mt-0 w-full text-red-600 italic text-xs absolute top-14 left-36 sm:left-0">
                           Champs obligatoire
                         </span>
                       )}
@@ -111,7 +111,7 @@ function AddAction() {
                 )}
               </div>
               {/* Code postal */}
-              <div className="flex flex-col md:flex-row md:space-x-2">
+              <div className="flex flex-col md:flex-row md:space-x-2 space-y-4 md:space-y-0">
                 <div className="flex flex-col">
                   <label htmlFor="zipCode">Code Postal</label>
                   <input
@@ -130,7 +130,7 @@ function AddAction() {
                     {...register("city", { required: true })}
                   />
                   {errors.city && (
-                    <span className="w-full text-red-600 italic text-xs absolute top-14">
+                    <span className="w-full text-red-600 italic text-xs absolute top-14 left-36 sm:left-0">
                       Champs obligatoire
                     </span>
                   )}
@@ -139,7 +139,7 @@ function AddAction() {
             </div>
 
             {/* DATE Horaires */}
-            <div className="flex flex-col md:flex-row w-full place-content-evenly md:space-x-1">
+            <div className="flex flex-col md:flex-row w-full place-content-evenly md:space-x-1 space-y-4 md:space-y-0">
               <div className="flex flex-col">
                 <label htmlFor="begin">Date de début</label>
                 <input
