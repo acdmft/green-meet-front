@@ -14,15 +14,17 @@ function AddAction() {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <>
+    <div>
       <Title />
       <div className="mt-16">
+        {/* FORM */}
         <form
           className="flex flex-col mx-auto items-center "
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="w-3/4 gap-4 lg:w-1/2 xl:w-1/3 mb-10 space-y-4 md:space-y-6">
-            <div className="flex flex-col">
+          {/* Titre */}
+          <div className="w-4/5 gap-4 lg:w-1/2 mb-10 space-y-4 md:space-y-10">
+            <div className="flex flex-col relative">
               <label htmlFor="title">Titre de l'action</label>
               <input
                 name="title"
@@ -34,15 +36,19 @@ function AddAction() {
                 })}
               />
               {errors.title && (
-                <span className="w-full text-red-600 italic text-xs">
+                <span className="w-full text-red-600 italic text-xs absolute top-14">
                   Merci d'indiquer le titre de votre action
                 </span>
               )}
             </div>
 
-            <div className="space-y-2 border-2 p-4 bg-gmlime-light">
-              <div className="space-y-2">
-                <label htmlFor="adress" className="font-bold">
+            {/* Adresse */}
+            <div className="space-y-2 border-2 p-4 bg-gray-100 py-10">
+              <div className="space-y-2 relative">
+                <label
+                  htmlFor="adress"
+                  className="font-bold absolute bottom-16"
+                >
                   Adresse
                 </label>
                 <div
@@ -50,6 +56,7 @@ function AddAction() {
                   name="adress"
                 >
                   <div className="flex flex-row space-x-2">
+                    {/* N° de rue */}
                     <div className="flex flex-col">
                       <label htmlFor="streetNumber">N° de rue</label>
                       <input
@@ -59,7 +66,7 @@ function AddAction() {
                         {...register("streetNumber", { min: 1, maxLength: 4 })}
                       />
                     </div>
-
+                    {/* Type de rue */}
                     <div className="flex flex-col">
                       <label htmlFor="streetType">Type</label>
                       <select
@@ -80,7 +87,8 @@ function AddAction() {
                       </select>
                     </div>
                   </div>
-                  <div className="flex-grow">
+                  {/* Nom de la rue */}
+                  <div className="flex-grow relative">
                     <div className="flex flex-col">
                       <label htmlFor="streetName">Nom de la rue</label>
                       <input
@@ -88,6 +96,11 @@ function AddAction() {
                         name="streetName"
                         {...register("streetName", { required: true })}
                       />
+                      {errors.streetName && (
+                        <span className="mt-0 w-full text-red-600 italic text-xs absolute top-14">
+                          Champs obligatoire
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -97,8 +110,8 @@ function AddAction() {
                   </span>
                 )}
               </div>
-
-              <div className="flex flex-row space-x-2">
+              {/* Code postal */}
+              <div className="flex flex-col md:flex-row md:space-x-2">
                 <div className="flex flex-col">
                   <label htmlFor="zipCode">Code Postal</label>
                   <input
@@ -108,8 +121,8 @@ function AddAction() {
                     {...register("zipCode", { min: 1, maxLength: 4 })}
                   />
                 </div>
-
-                <div className="flex flex-col flex-grow">
+                {/* Ville */}
+                <div className="flex flex-col flex-grow relative">
                   <label htmlFor="city">Ville</label>
                   <input
                     className="border-2"
@@ -117,7 +130,7 @@ function AddAction() {
                     {...register("city", { required: true })}
                   />
                   {errors.city && (
-                    <span className="w-full text-red-600 italic text-xs">
+                    <span className="w-full text-red-600 italic text-xs absolute top-14">
                       Champs obligatoire
                     </span>
                   )}
@@ -125,6 +138,7 @@ function AddAction() {
               </div>
             </div>
 
+            {/* DATE Horaires */}
             <div className="flex flex-col md:flex-row w-full place-content-evenly md:space-x-1">
               <div className="flex flex-col">
                 <label htmlFor="begin">Date de début</label>
@@ -160,6 +174,7 @@ function AddAction() {
               </div>
             </div>
 
+            {/* DESCRIPTION */}
             <div className="flex flex-col">
               <label htmlFor="description">Description</label>
               <textarea
@@ -184,7 +199,7 @@ function AddAction() {
           <Button type="submit">Créer l'action</Button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
