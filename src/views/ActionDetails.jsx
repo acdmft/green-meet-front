@@ -11,6 +11,7 @@ function ActionDetails(props) {
     fetch(`/actions/${id}`)
       .then((res) => res.json())
       .then((res) => {
+        console.log(res.data);
         setAction(res.data);
       })
       .catch((err) => {
@@ -38,6 +39,10 @@ function ActionDetails(props) {
         <div className="flex flex-row">
           <h4 className="text-gmgreen-light text-lg">Adresse :</h4>
           <p className="text-lg pl-2">{action.address}</p>
+        </div>
+        <div className="flex flex-row">
+          <h4 className="text-gmgreen-light text-lg">Ville :</h4>
+          <p className="text-lg pl-2">{action.city}</p>
         </div>
         <div>
           <h4 className="text-gmgreen-light text-lg">Détails : </h4>

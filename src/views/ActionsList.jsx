@@ -24,14 +24,14 @@ function ActionsList() {
   };
 
   useEffect(() => {
-    setIsLoaded(!isLoaded);
     if (userInput !== "") {
-      console.log("USER INPUT", userInput);
+      setIsLoaded(true);
+
       fetch(`/actions?city=${userInput}`)
         .then((res) => res.json())
         .then((res) => {
-          setIsLoaded(!isLoaded);
           setFilteredActions(res.data);
+          setIsLoaded(false);
         })
         .catch((err) => {
           console.error("ERROR", err);
@@ -40,12 +40,13 @@ function ActionsList() {
   }, [userInput]);
 
   useEffect(() => {
-    setIsLoaded(!isLoaded);
+    setIsLoaded(true);
+
     fetch("/actions")
       .then((res) => res.json())
       .then((res) => {
-        setIsLoaded(!isLoaded);
         setActions(res.data);
+        setIsLoaded(false);
       });
   }, []);
 
@@ -67,7 +68,14 @@ function ActionsList() {
 
   const RenderFilteredActions = () => {
     if (filteredActions.length === 0) {
-      return (
+      return isLoaded ? (
+        <div className="ml-96 mt-52 loader flex flex-col items-center">
+          <div className="loader2 text-2xl">
+            <div className="round1"></div>
+            <div className="round2"></div>
+          </div>
+        </div>
+      ) : (
         <div>
           <p className="text-red-500 text-center">
             Aucune action ne correspond à votre recherche :(
@@ -78,6 +86,7 @@ function ActionsList() {
         </div>
       );
     }
+
     return filteredActions.map((action) => (
       <ActionCard
         id={action.action_id}
@@ -98,7 +107,7 @@ function ActionsList() {
           <div className="flex flex-col w-full">
             {/* <label htmlFor="city">City</label> */}
             <input
-              className="border-2 h-10"
+              className="border-2 h-10 pl-2"
               {...register("city", {
                 required: true,
                 maxLength: 150,
@@ -107,7 +116,7 @@ function ActionsList() {
               type="text"
               name="city"
               id="city"
-              placeholder="city"
+              placeholder="Entrez votre ville"
               // value={localStorage.getItem("email")}
             />
             {/* Message d'erreur si input invalide : */}
@@ -124,14 +133,6 @@ function ActionsList() {
         </form>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {isLoaded && (
-          <div class="loader">
-            <div class="loader2">
-              <div class="round1"></div>
-              <div class="round2"></div>
-            </div>
-          </div>
-        )}
         {!userInput ? RenderActions() : RenderFilteredActions()}
       </div>
     </div>

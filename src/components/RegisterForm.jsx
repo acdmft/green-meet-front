@@ -7,6 +7,7 @@ function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm();
   const onSubmit = (data) => console.log(data);
 
@@ -54,8 +55,13 @@ function RegisterForm() {
               className="border-2"
               type="password"
               name="confirmPassword"
-              {...register("confirmPassword", { required: true, minLength: 6 })}
+              {...register("confirmPassword", { required: true })}
             />
+            {errors.confirmPassword && (
+              <span className="w-full text-red-600 italic text-xs">
+                Le mot de passe ne correspond pas
+              </span>
+            )}
           </div>
           <div className="flex flex-col">
             <label htmlFor="lastName">Lastname</label>
