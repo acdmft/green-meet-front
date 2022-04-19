@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 function ActionCard(props) {
   let navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/action");
+  const handleClick = (id) => {
+    navigate(`/actions/${id}`);
   };
   return (
     <div>
@@ -35,7 +35,9 @@ function ActionCard(props) {
         </svg>
       </a> */}
         <div className="sm:w-1/2 ">
-          <ArrowButton onClick={handleClick}>Voir plus</ArrowButton>
+          <ArrowButton onClick={() => handleClick(props.id)}>
+            Voir plus
+          </ArrowButton>
         </div>
       </div>
     </div>

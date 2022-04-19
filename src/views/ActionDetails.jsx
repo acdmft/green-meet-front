@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams, Outlet } from "react-router-dom";
 import ContactForm from "../components/ContactForm";
 
-function ActionDetails() {
+function ActionDetails(props) {
+  const { id } = useParams();
+  console.log("ACTION DETAILS");
+  useEffect(() => {
+    console.log("PROPS ID", id);
+    fetch(`/actions/${id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error("ERROR", err);
+      });
+  }, []);
+
   return (
     <div>
       <h2>Titre action (Nettoyage parc,...)</h2>
@@ -21,6 +36,7 @@ function ActionDetails() {
       </p>
       <h4>Contacter l'organisateur : </h4>
       <ContactForm />
+      <Outlet />
     </div>
   );
 }

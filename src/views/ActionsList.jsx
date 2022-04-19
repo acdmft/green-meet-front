@@ -49,6 +49,7 @@ function ActionsList() {
       .slice(0, 12)
       .map((action) => (
         <ActionCard
+          id={action.action_id}
           key={action.title}
           title={action.title}
           description={action.description}
@@ -59,6 +60,7 @@ function ActionsList() {
   const RenderFilteredActions = () => {
     return filteredActions.map((action) => (
       <ActionCard
+        id={action.action_id}
         key={action.title}
         title={action.title}
         description={action.description}
@@ -103,7 +105,7 @@ function ActionsList() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         {!userInput ? RenderActions() : RenderFilteredActions()}
-        {filteredActions.length === 0 && (
+        {/* {filteredActions.length === 0 && (
           <div>
             <p className="text-red-500 text-center">
               Aucune action ne correspond à votre recherche :(
@@ -113,7 +115,7 @@ function ActionsList() {
               <a href="/addAction">Créer une action</a>
             </p>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
