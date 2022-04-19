@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
+import "../App.css";
+
 // Components
 import ActionCard from "../components/ActionCard";
 import Button from "../components/Button";
@@ -9,6 +11,7 @@ function ActionsList() {
   const [actions, setActions] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [filteredActions, setFilteredActions] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(true);
 
   const {
     register,
@@ -21,12 +24,13 @@ function ActionsList() {
   };
 
   useEffect(() => {
+    setIsLoaded(!isLoaded);
     if (userInput !== "") {
       console.log("USER INPUT", userInput);
       fetch(`/actions?city=${userInput}`)
         .then((res) => res.json())
         .then((res) => {
-          console.log(res.data);
+          setIsLoaded(!isLoaded);
           setFilteredActions(res.data);
         })
         .catch((err) => {
@@ -36,15 +40,19 @@ function ActionsList() {
   }, [userInput]);
 
   useEffect(() => {
+    setIsLoaded(!isLoaded);
     fetch("/actions")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
+        setIsLoaded(!isLoaded);
         setActions(res.data);
       });
   }, []);
 
   const RenderActions = () => {
+    if (!actions) {
+      return <p>Aucune action enregistrée</p>;
+    }
     return actions
       .slice(0, 12)
       .map((action) => (
@@ -58,6 +66,18 @@ function ActionsList() {
   };
 
   const RenderFilteredActions = () => {
+    if (filteredActions.length === 0) {
+      return (
+        <div>
+          <p className="text-red-500 text-center">
+            Aucune action ne correspond à votre recherche :(
+          </p>
+          <p>
+            Etendez votre recherche ou <a href="/addAction">Créer une action</a>
+          </p>
+        </div>
+      );
+    }
     return filteredActions.map((action) => (
       <ActionCard
         id={action.action_id}
@@ -104,18 +124,15 @@ function ActionsList() {
         </form>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {!userInput ? RenderActions() : RenderFilteredActions()}
-        {/* {filteredActions.length === 0 && (
-          <div>
-            <p className="text-red-500 text-center">
-              Aucune action ne correspond à votre recherche :(
-            </p>
-            <p>
-              Etendez votre recherche ou{" "}
-              <a href="/addAction">Créer une action</a>
-            </p>
+        {isLoaded && (
+          <div class="loader">
+            <div class="loader2">
+              <div class="round1"></div>
+              <div class="round2"></div>
+            </div>
           </div>
-        )} */}
+        )}
+        {!userInput ? RenderActions() : RenderFilteredActions()}
       </div>
     </div>
   );

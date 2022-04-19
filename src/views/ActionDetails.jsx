@@ -8,11 +8,9 @@ function ActionDetails(props) {
   const [action, setAction] = useState([]);
 
   useEffect(() => {
-    console.log("PROPS ID", id);
     fetch(`/actions/${id}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
         setAction(res.data);
       })
       .catch((err) => {
@@ -22,31 +20,33 @@ function ActionDetails(props) {
 
   const RenderActions = () => {
     return (
-      <div className="flex flex-col items-center m-10">
-        <h2 className="text-gmlime-light text-2xl">{action.title}</h2>
+      <div className="flex flex-col m-10 space-y-2">
+        <h2 className="text-gmlime-light text-2xl mb-10">{action.title}</h2>
         <img></img>
         <div className="flex flex-row">
-          <h4>Organisateur : </h4>
-          <p>{action.organiser_id}</p>
+          <h4 className="text-gmgreen-light text-lg">Organisateur : </h4>
+          <p className="text-lg pl-2">{action.organiser_id}</p>
         </div>
         <div className="flex flex-row">
-          <h4>Date : </h4>
-          <p>{action.date}</p>
+          <h4 className="text-gmgreen-light text-lg">Date : </h4>
+          <p className="text-lg pl-2">{action.date}</p>
         </div>
         <div className="flex flex-row">
-          <h4>Horaires : </h4>
-          <p>{action.time}</p>
+          <h4 className="text-gmgreen-light text-lg">Horaires : </h4>
+          <p className="text-lg pl-2">{action.time}</p>
         </div>
         <div className="flex flex-row">
-          <h4>Adresse :</h4>
-          <p>{action.address}</p>
+          <h4 className="text-gmgreen-light text-lg">Adresse :</h4>
+          <p className="text-lg pl-2">{action.address}</p>
         </div>
         <div>
-          <h4>Détails : </h4>
-          <p>{action.description}</p>
+          <h4 className="text-gmgreen-light text-lg">Détails : </h4>
+          <p className="text-md">{action.description}</p>
         </div>
         <div>
-          <h4>Contacter l'organisateur : </h4>
+          <h4 className="text-gmgreen-light text-lg">
+            Contacter l'organisateur :
+          </h4>
           <ContactForm />
         </div>
       </div>
