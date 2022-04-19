@@ -46,16 +46,17 @@ function Homepage() {
       </div>
       <div className="flex justify-center">
         <div className="grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {actions.slice(0, 3).map((action) => {
-            return (
-              <ActionCard
-                id={action.action_id}
-                key={action.action_id}
-                title={action.title}
-                description={action.description}
-              />
-            );
-          })}
+          {actions &&
+            actions.slice(0, 3).map((action) => {
+              return (
+                <ActionCard
+                  id={action.action_id}
+                  key={action.action_id}
+                  title={action.title}
+                  description={action.description}
+                />
+              );
+            })}
         </div>
       </div>
     </>
