@@ -22,20 +22,33 @@ function ActionDetails(props) {
 
   const RenderActions = () => {
     return (
-      <div>
-        <h2>{action.title}</h2>
+      <div className="flex flex-col items-center m-10">
+        <h2 className="text-gmlime-light text-2xl">{action.title}</h2>
         <img></img>
-        <h4>Organisateur : </h4>
-        <p>{action.origanizer_id}</p>
-        <h4>Date : </h4>
-        <p>{action.date}</p>
-        <h4>Horaires : </h4>
-        <p>{action.time}</p>
-        <h4>Détails : </h4>
-        <p>{action.description}</p>
-        <h4>Contacter l'organisateur : </h4>
-        <ContactForm />
-        <Outlet />
+        <div className="flex flex-row">
+          <h4>Organisateur : </h4>
+          <p>{action.organiser_id}</p>
+        </div>
+        <div className="flex flex-row">
+          <h4>Date : </h4>
+          <p>{action.date}</p>
+        </div>
+        <div className="flex flex-row">
+          <h4>Horaires : </h4>
+          <p>{action.time}</p>
+        </div>
+        <div className="flex flex-row">
+          <h4>Adresse :</h4>
+          <p>{action.address}</p>
+        </div>
+        <div>
+          <h4>Détails : </h4>
+          <p>{action.description}</p>
+        </div>
+        <div>
+          <h4>Contacter l'organisateur : </h4>
+          <ContactForm />
+        </div>
       </div>
     );
   };
