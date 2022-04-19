@@ -8,7 +8,19 @@ function RegisterForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    // remove confirmPassword key, value form request to pass validation 
+    delete data.confirmPassword;
+    fetch("/register", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(data)
+
+    }).catch((err)=> console.log(err));
+  }
 
   return (
     <div>

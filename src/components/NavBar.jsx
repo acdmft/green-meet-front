@@ -27,15 +27,19 @@ const connexionLinks = [
   { name: "Connexion", href: "/login" },
   { name: "S'enregistrer", href: "/register" },
 ];
-const navLinks = pages.map((page) => (
-  <a
-    key={page}
-    className="no-underline text-gmkaki font-semibold hover:text-gray-600"
-    href={page.href}
-  >
-    {page.name}
-  </a>
-));
+const navLinks = pages.map((page, index) => {
+  // if (index !== 0) {
+    return (
+      <a
+        key={page}
+        className="no-underline text-gmkaki font-semibold hover:text-gray-600"
+        href={page.href}
+      >
+        {page.name}
+      </a>
+    );
+  // }
+});
 const navConnexion = connexionLinks.map((cl) => (
   <a
     key={cl}
