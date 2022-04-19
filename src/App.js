@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { React, useContext, createContext, useState } from "react";
 
 // Components
 
@@ -19,30 +19,37 @@ import ContactAdmin from "./views/ContactAdmin";
 import ActionDetails from "./views/ActionDetails";
 import AddAction from "./views/AddAction";
 
+// context
+export const AuthContext = createContext();
+
 function App() {
   const handleClick = () => {
     console.log("COUCOU");
   };
+  // isAuthenticated state (goes in context value)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
-    <BrowserRouter classname="relative">
-      <div className="flex flex-col justify-between min-h-screen">
-        <NavBar />
-        <div className="flex-grow">
-          <Routes>
-            <Route exact path="/" element={<Homepage />} />
-            <Route path="/actions" element={<ActionsList />} />
-            <Route path="/actions/:id" element={<ActionDetails />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route exact path="/contributors" element={<Contributors />} />
-            <Route exact path="/mentions" element={<Mentions />} />
-            <Route exact path="/contact" element={<ContactAdmin />} />
-            <Route exact path="/addAction" element={<AddAction />} />
-          </Routes>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+      <BrowserRouter classname="relative">
+        <div className="flex flex-col justify-between min-h-screen">
+          <NavBar />
+          <div className="flex-grow">
+            <Routes>
+              <Route exact path="/" element={<Homepage />} />
+              <Route path="/actions" element={<ActionsList />} />
+              <Route path="/actions/:id" element={<ActionDetails />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route exact path="/contributors" element={<Contributors />} />
+              <Route exact path="/mentions" element={<Mentions />} />
+              <Route exact path="/contact" element={<ContactAdmin />} />
+              <Route exact path="/addAction" element={<AddAction />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 
