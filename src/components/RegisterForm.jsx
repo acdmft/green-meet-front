@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useForm } from "react-hook-form";
 import Button from "./Button";
+// Context 
+import { AuthContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
+  // context 
+  const context = useContext(AuthContext);
+  // navigation 
+  const navigate = useNavigate();
+  // react-hook-form
   const {
     register,
     handleSubmit,
@@ -19,7 +27,14 @@ function RegisterForm() {
       },
       body: JSON.stringify(data)
 
-    }).catch((err)=> console.log(err));
+    })
+    .then((data) => {
+      if (data.status === 201) {
+        context.setIsAuthenticated(true);
+        navigate("/"); 
+      }
+    })
+    .catch((err)=> console.log(err));
   }
 
   return (

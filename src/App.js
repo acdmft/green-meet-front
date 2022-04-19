@@ -19,7 +19,7 @@ import ContactAdmin from "./views/ContactAdmin";
 import ActionDetails from "./views/ActionDetails";
 import AddAction from "./views/AddAction";
 
-// context
+// Context
 export const AuthContext = createContext();
 
 function App() {
