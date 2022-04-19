@@ -22,19 +22,25 @@ function ActionsList() {
 
   useEffect(() => {
     if (userInput !== "") {
-      fetch(`https://restcountries.com/v3.1/region/${userInput}`)
+      console.log("USER INPUT", userInput);
+      fetch(`/actions?city=${userInput}`)
         .then((res) => res.json())
         .then((res) => {
-          setFilteredActions(res);
+          console.log(res.data);
+          setFilteredActions(res.data);
+        })
+        .catch((err) => {
+          console.error("ERROR", err);
         });
     }
   }, [userInput]);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("/actions")
       .then((res) => res.json())
       .then((res) => {
-        setActions(res);
+        console.log(res.data);
+        setActions(res.data);
       });
   }, []);
 
@@ -43,9 +49,9 @@ function ActionsList() {
       .slice(0, 12)
       .map((action) => (
         <ActionCard
-          key={action.name}
-          title={action.name.common}
-          description={action.altSpellings}
+          key={action.title}
+          title={action.title}
+          description={action.description}
         />
       ));
   };
@@ -53,9 +59,9 @@ function ActionsList() {
   const RenderFilteredActions = () => {
     return filteredActions.map((action) => (
       <ActionCard
-        key={action.name}
-        title={action.name.common}
-        description={action.altSpellings}
+        key={action.title}
+        title={action.title}
+        description={action.description}
       />
     ));
   };
@@ -96,9 +102,18 @@ function ActionsList() {
         </form>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {filteredActions.length === 0
-          ? RenderActions()
-          : RenderFilteredActions()}
+        {!userInput ? RenderActions() : RenderFilteredActions()}
+        {filteredActions.length === 0 && (
+          <div>
+            <p className="text-red-500 text-center">
+              Aucune action ne correspond à votre recherche :(
+            </p>
+            <p>
+              Etendez votre recherche ou{" "}
+              <a href="/addAction">Créer une action</a>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

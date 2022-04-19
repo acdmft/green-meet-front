@@ -37,6 +37,7 @@ function App() {
             <Route path="/mentions" element={<Mentions />} />
             <Route path="/contact" element={<ContactAdmin />} />
             <Route path="/action" element={<ActionDetails />} />
+            {/* <Route path="/actions/:city" component={<ActionDetails />} /> */}
             <Route path="/addAction" element={<AddAction />} />
           </Routes>
         </div>
