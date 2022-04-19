@@ -5,10 +5,11 @@ import Title from "../components/Title";
 function Homepage() {
   const [actions, setActions] = useState([]);
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("/actions")
       .then((res) => res.json())
       .then((res) => {
-        setActions(res);
+        setActions(res.data);
+        console.log(actions);
       });
   }, []);
   return (
@@ -48,9 +49,10 @@ function Homepage() {
           {actions.slice(0, 3).map((action) => {
             return (
               <ActionCard
-                key={action.name}
-                title={action.name.common}
-                description={action.altSpellings}
+                id={action.action_id}
+                key={action.action_id}
+                title={action.title}
+                description={action.description}
               />
             );
           })}

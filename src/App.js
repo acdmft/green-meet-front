@@ -30,15 +30,13 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route exact path="/" element={<Homepage />} />
-            <Route path="/actions" element={<ActionsList />}>
-              <Route path=":id" component={<ActionDetails />} />
-            </Route>
+            <Route path="/actions" element={<ActionsList />} />
+            <Route path="/actions/:id" element={<ActionDetails />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/contributors" element={<Contributors />} />
             <Route exact path="/mentions" element={<Mentions />} />
             <Route exact path="/contact" element={<ContactAdmin />} />
-            {/* <Route path="/actions" element={<ActionDetails />} /> */}
             <Route exact path="/addAction" element={<AddAction />} />
           </Routes>
         </div>
