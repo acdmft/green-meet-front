@@ -9,7 +9,7 @@ function ActionCard(props) {
   };
   return (
     <div>
-      <div class="p-6 h-64 rounded-lg border shadow-inner shadow-white bg-gray-800 border-gray-700 m-5 flex flex-col relative">
+      <div className="p-6 h-64 rounded-lg border shadow-inner shadow-white bg-gray-800 border-gray-700 m-5 flex flex-col relative">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
             {props.title}

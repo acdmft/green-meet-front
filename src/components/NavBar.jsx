@@ -26,7 +26,7 @@ function NavBar() {
     // if (index !== 0) {
     return (
       <a
-        key={page}
+        key={index}
         className="b text-white font-semibold hover:text-gmlime-light"
         href={page.href}
       >
@@ -35,9 +35,9 @@ function NavBar() {
     );
     // }
   });
-  const navConnexion = connexionLinks.map((cl) => (
+  const navConnexion = connexionLinks.map((cl, index) => (
     <a
-      key={cl}
+      key={index}
       className="text-white font-semibold hover:text-gmlime-light"
       href={cl.href}
     >
