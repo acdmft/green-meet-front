@@ -49,6 +49,7 @@ function ActionsList() {
         setIsLoaded(false);
       });
   }, []);
+  console.log("ActionsList");
 
   const RenderActions = () => {
     if (!actions) {
@@ -117,7 +118,7 @@ function ActionsList() {
               name="city"
               id="city"
               placeholder="Entrez votre ville"
-              // value={localStorage.getItem("email")}
+            // value={localStorage.getItem("email")}
             />
             {/* Message d'erreur si input invalide : */}
             {errors.city && (

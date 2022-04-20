@@ -68,7 +68,7 @@ function LoginForm() {
             name="email"
             id="email"
             placeholder="email"
-            // value={localStorage.getItem("email")}
+          // value={localStorage.getItem("email")}
           />
           {/* Message d'erreur si input invalide : */}
           {errors.email && (

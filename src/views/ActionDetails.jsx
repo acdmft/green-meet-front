@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Outlet } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import ContactForm from "../components/ContactForm";
+import Button from "../components/Button";
+import { AuthContext } from "../App";
 
 function ActionDetails(props) {
   const { id } = useParams();
-
+  const context = useContext(AuthContext);
+  const navigate = useNavigate();
   const [action, setAction] = useState([]);
 
   useEffect(() => {
@@ -18,6 +21,22 @@ function ActionDetails(props) {
         console.error("ERROR", err);
       });
   }, []);
+
+  const handleSubmit = () => {
+    if (context.isAuthenticated) {
+      fetch(`/actions/${id}/join`, {
+        method: "POST",
+      }).then(() => {
+        console.log("OK");
+      })
+        .catch((err) => {
+          console.log(err);
+        })
+      console.log(id);
+    } else {
+      navigate("/login")
+    }
+  }
 
   const RenderActions = () => {
     return (
@@ -47,6 +66,11 @@ function ActionDetails(props) {
         <div>
           <h4 className="text-gmgreen-light text-lg">Détails : </h4>
           <p className="text-md">{action.description}</p>
+        </div>
+        <div>
+          <Button onClick={handleSubmit}>
+            Rejoindre l'action
+          </Button>
         </div>
         <div>
           <h4 className="text-gmgreen-light text-lg">
