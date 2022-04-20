@@ -13,6 +13,10 @@ module.exports = {
           light: "rgba(148, 174, 65, 1)",
           dark: "rgba(105, 127, 40, 1)",
         },
+        gmvert: {
+          light: "rgba(145, 188, 179, 1)",
+          dark: "rgba(33, 106, 92, 1)",
+        },
       },
     },
   },

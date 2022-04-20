@@ -11,7 +11,7 @@ function ActionDetails(props) {
     fetch(`/actions/${id}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
+        console.log(id);
         setAction(res.data);
       })
       .catch((err) => {
