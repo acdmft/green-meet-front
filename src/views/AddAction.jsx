@@ -12,12 +12,43 @@ function AddAction() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    // form date
     const beginDate = data.begin.split("T")[0];
     const beginTime = data.begin.split("T")[1];
     const endDate = data.end.split("T")[0];
     const endTime = data.end.split("T")[1];
-
-    console.log(beginDate, beginTime, endDate, endTime);
+    // form address
+    const address = {
+      streetType: data.streetType,
+      streetNumber: data.streetNumber,
+      streetName: data.streetName,
+      zipCode: data.zipCode,
+    };
+    // data to send
+    const finalData = {
+      title: data.title,
+      address: data.address,
+      beginDate: beginDate,
+      beginTime: beginTime,
+      endDate: endDate,
+      endTime: endTime,
+      city: data.city,
+      description: data.description,
+      // should be taken from input value
+      type: "ramassage",
+    };
+    // send data to the backend, route "/actions", method "POST"
+    fetch("/actions", {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(finalData)
+    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+    // console.log(beginDate, beginTime, endDate, endTime);
+    console.log(data);
   };
 
   return (
