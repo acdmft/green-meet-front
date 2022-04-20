@@ -1,22 +1,22 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
 // Components
 import Button from "../components/Button";
 import Title from "../components/Title";
+// toastify 
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function AddAction() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    // form date
-    const beginDate = data.begin.split("T")[0];
-    const beginTime = data.begin.split("T")[1];
-    const endDate = data.end.split("T")[0];
-    const endTime = data.end.split("T")[1];
+    const [beginDate, beginTime] = data.begin.split("T");
+    const [endDate, endTime] = data.end.split("T");
     // form address
     const address = {
       strTyp: data.streetType,
@@ -45,8 +45,16 @@ function AddAction() {
       },
       body: JSON.stringify(finalData),
     })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    .then((res) => {
+      if (res.status === 201) {
+        toast.success("L'action est créée !");
+        navigate("/");
+      } else {
+        // console.log(res.message ? 'aaa': 'bbb')
+        toast.error("Quelque chose s'est mal passé, réessayez plus tard!");
+      }
+    })
+    .catch((err) => toast.error("Quelque chose s'est mal passé, réessayez plus tard!"));
     // console.log(beginDate, beginTime, endDate, endTime);
     console.log(data);
   };
