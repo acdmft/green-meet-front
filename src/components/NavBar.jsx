@@ -13,29 +13,29 @@ function NavBar() {
     { name: "Les actions", href: "/actions" },
     { name: "Créer mon action", href: "/addAction" },
   ];
-  const connexionLinks = context.isAuthenticated ? [
-    {name: "Déconnexion", href: ""}
-  ] : [
-    { name: "Connexion", href: "/login" },
-    { name: "S'enregistrer", href: "/register" },
-  ];
+  const connexionLinks = context.isAuthenticated
+    ? [{ name: "Déconnexion", href: "" }]
+    : [
+        { name: "Connexion", href: "/login" },
+        { name: "S'enregistrer", href: "/register" },
+      ];
   const navLinks = pages.map((page, index) => {
     // if (index !== 0) {
-      return (
-        <a
-          key={page}
-          className="no-underline text-gmkaki font-semibold hover:text-gray-600"
-          href={page.href}
-        >
-          {page.name}
-        </a>
-      );
+    return (
+      <a
+        key={page}
+        className="b text-white font-semibold hover:text-gmlime-light"
+        href={page.href}
+      >
+        {page.name}
+      </a>
+    );
     // }
   });
   const navConnexion = connexionLinks.map((cl) => (
     <a
       key={cl}
-      className="no-underline text-gmkaki font-semibold hover:text-gray-600"
+      className="text-white font-semibold hover:text-gmlime-light"
       href={cl.href}
     >
       {cl.name}
@@ -43,8 +43,13 @@ function NavBar() {
   ));
 
   return (
-    <div className="sticky top-0 bg-white">
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} navLinks={navLinks} navConnexion={navConnexion} />
+    <div className="sticky z-10 top-0 bg-gray-800">
+      <Navbar
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        navLinks={navLinks}
+        navConnexion={navConnexion}
+      />
       {menuOpen && (
         <MobileMenu>
           {/* <div className=""> */}
@@ -57,21 +62,16 @@ function NavBar() {
   );
 }
 
-
 const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
-  <div className="flex items-center justify-between p-4">
+  <div className="flex items-center justify-between h-16">
     <div className="flex items-center">
-      <img src="../../img/logo1.png" className="h-10 w-10" />
-      <a
-        href="/"
-        className="text-xl font-bold no-underline text-gmgreen-dark hover:text-gray-600"
-      >
-        Green Meet
+      <a href="/">
+        <img src="../../img/logo4.jpeg" className="h-16 w-28 m-0 p-0" />
       </a>
     </div>
-    <nav className="hidden lg:block">
-      <div className="flex flex-row space-x-16 text-gmgreen-light">
-        <div className="space-x-6">{navLinks}</div>
+    <nav className="hidden lg:block mr-10">
+      <div className="flex flex-row space-x-32 text-white">
+        <div className="space-x-10">{navLinks}</div>
         <div className="space-x-6">{navConnexion}</div>
       </div>
     </nav>

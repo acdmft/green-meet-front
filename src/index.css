@@ -12,7 +12,18 @@ body {
 @tailwind utilities;
 
 .title {
-  background-image: url("../public/img/dechets4.jpg");
+  background-image: url("../public/img/prairie.jpg");
   background-size: cover;
-  background-position: bottom;
+  /* background-position: ; */
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.navbarIndex {
+  z-index: 5 !important;
 }
