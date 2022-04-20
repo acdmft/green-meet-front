@@ -1,4 +1,5 @@
 import { React, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../App";
 
 function NavBar() {
@@ -8,7 +9,7 @@ function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const pages = [
-    { name: "Aller au contenu", href: "#contenu" },
+    // { name: "Aller au contenu", href: "#contenu" },
     { name: "Accueil", href: "/" },
     { name: "Les actions", href: "/actions" },
     { name: "Créer mon action", href: "/addAction" },
@@ -25,24 +26,24 @@ function NavBar() {
   const navLinks = pages.map((page, index) => {
     // if (index !== 0) {
     return (
-      <a
+      <Link
         key={index}
-        className="b text-white font-semibold hover:text-gmlime-light"
-        href={page.href}
+        className="text-white font-semibold hover:text-gmlime-light"
+        to={page.href}
       >
         {page.name}
-      </a>
+      </Link>
     );
     // }
   });
   const navConnexion = connexionLinks.map((cl, index) => (
-    <a
+    <Link
       key={index}
       className="text-white font-semibold hover:text-gmlime-light"
-      href={cl.href}
+      to={cl.href}
     >
       {cl.name}
-    </a>
+    </Link>
   ));
 
   return (
@@ -56,7 +57,15 @@ function NavBar() {
       {menuOpen && (
         <MobileMenu>
           {/* <div className=""> */}
-          <div className="flex flex-col space-y-2">{navLinks}</div>
+          <div className="flex flex-col space-y-2">
+            <a
+              className="text-white font-semibold hover:text-gmlime-light"
+              href="#contenu"
+            >
+              Aller au contenu
+            </a>
+            {navLinks}
+          </div>
           <div className="flex flex-col space-y-2 py-5">{navConnexion}</div>
           {/* </div> */}
         </MobileMenu>
@@ -68,13 +77,21 @@ function NavBar() {
 const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
   <div className="flex items-center justify-between h-16">
     <div className="flex items-center">
-      <a href="/">
+      <Link to="/">
         <img src="../../img/logo4.jpeg" className="h-16 w-28 m-0 p-0" />
-      </a>
+      </Link>
     </div>
     <nav className="hidden lg:block mr-10">
       <div className="flex flex-row space-x-32 text-white">
-        <div className="space-x-10">{navLinks}</div>
+        <div className="space-x-10">
+          <a
+            className="text-white font-semibold hover:text-gmlime-light"
+            href="#contenu"
+          >
+            Aller au contenu
+          </a>
+          {navLinks}
+        </div>
         <div className="space-x-6">{navConnexion}</div>
       </div>
     </nav>
