@@ -70,7 +70,7 @@ function ActionsList() {
     if (filteredActions.length === 0) {
       return isLoaded ? (
         <div className="ml-96 mt-52 loader flex flex-col items-center">
-          <div className="loader2 text-2xl">
+          <div className="loader2">
             <div className="round1"></div>
             <div className="round2"></div>
           </div>

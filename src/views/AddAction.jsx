@@ -11,7 +11,14 @@ function AddAction() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const beginDate = data.begin.split("T")[0];
+    const beginTime = data.begin.split("T")[1];
+    const endDate = data.end.split("T")[0];
+    const endTime = data.end.split("T")[1];
+
+    console.log(beginDate, beginTime, endDate, endTime);
+  };
 
   return (
     <div>
@@ -118,7 +125,7 @@ function AddAction() {
                     name="zipCode"
                     className="border-2 w-32"
                     type="number"
-                    {...register("zipCode", { min: 1, maxLength: 4 })}
+                    {...register("zipCode", { min: 1, maxLength: 5 })}
                   />
                 </div>
                 {/* Ville */}
