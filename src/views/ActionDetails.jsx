@@ -26,21 +26,22 @@ function ActionDetails(props) {
     if (context.isAuthenticated) {
       fetch(`/actions/${id}/join`, {
         method: "POST",
-      }).then(() => {
-        console.log("OK");
       })
+        .then(() => {
+          console.log("OK");
+        })
         .catch((err) => {
           console.log(err);
-        })
+        });
       console.log(id);
     } else {
-      navigate("/login")
+      navigate("/login");
     }
-  }
+  };
 
   const RenderActions = () => {
     return (
-      <div className="flex flex-col m-10 space-y-2">
+      <div id="contenu" className="flex flex-col m-10 space-y-2">
         <h2 className="text-gmlime-light text-2xl mb-10">{action.title}</h2>
         <img></img>
         <div className="flex flex-row">
@@ -68,9 +69,7 @@ function ActionDetails(props) {
           <p className="text-md">{action.description}</p>
         </div>
         <div>
-          <Button onClick={handleSubmit}>
-            Rejoindre l'action
-          </Button>
+          <Button onClick={handleSubmit}>Rejoindre l'action</Button>
         </div>
         <div>
           <h4 className="text-gmgreen-light text-lg">

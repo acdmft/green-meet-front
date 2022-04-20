@@ -20,6 +20,7 @@ import Mentions from "./views/Mentions";
 import ContactAdmin from "./views/ContactAdmin";
 import ActionDetails from "./views/ActionDetails";
 import AddAction from "./views/AddAction";
+import Profile from "./views/Profile";
 
 // Context
 export const AuthContext = createContext();
@@ -46,6 +47,7 @@ function App() {
               <Route exact path="/mentions" element={<Mentions />} />
               <Route exact path="/contact" element={<ContactAdmin />} />
               <Route exact path="/addAction" element={<AddAction />} />
+              <Route exact path="/profile" element={<Profile />} />
             </Routes>
           </div>
           <Footer />

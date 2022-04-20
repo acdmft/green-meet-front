@@ -11,14 +11,12 @@ function ContactAdmin() {
   const onSubmit = (data) => console.log(data);
 
   return (
-    
-    <div>
+    <div id="contenu">
       <form
         className="flex flex-col mx-auto items-center"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="grid grid-rows-3 grid-flow-col gap-4 md:w-1/2 mb-12 space-x-8">
-          
           <div className="flex flex-col">
             <label htmlFor="lastName">Lastname</label>
             <input
@@ -47,30 +45,29 @@ function ContactAdmin() {
           </div>
         </div>
         <div className="flex flex-col pl-8">
-            <label htmlFor="description">Commentaire</label>
-            <textarea
-              rows="15"
-              className="border-2 h-full"
-              {...register("Description", {
-                required: true,
-                max: 200,
-                min: 50,
-                maxLength: 500,
-                minLength: 20,
-              })}
-            />
+          <label htmlFor="description">Commentaire</label>
+          <textarea
+            rows="15"
+            className="border-2 h-full"
+            {...register("Description", {
+              required: true,
+              max: 200,
+              min: 50,
+              maxLength: 500,
+              minLength: 20,
+            })}
+          />
 
-            {errors.description && (
-              <span className="w-full text-red-600 italic text-xs">
-               Veuillez indiquer votre message
-              </span>
-            )}
-          </div>
+          {errors.description && (
+            <span className="w-full text-red-600 italic text-xs">
+              Veuillez indiquer votre message
+            </span>
+          )}
+        </div>
         <Button type="submit">Soumettre</Button>
       </form>
     </div>
   );
 }
-
 
 export default ContactAdmin;

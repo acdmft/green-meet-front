@@ -14,7 +14,10 @@ function NavBar() {
     { name: "Créer mon action", href: "/addAction" },
   ];
   const connexionLinks = context.isAuthenticated
-    ? [{ name: "Déconnexion", href: "" }]
+    ? [
+        { name: "Déconnexion", href: "" },
+        { name: "Profil", href: "/profile" },
+      ]
     : [
         { name: "Connexion", href: "/login" },
         { name: "S'enregistrer", href: "/register" },

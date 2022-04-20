@@ -39,14 +39,14 @@ function AddAction() {
     };
     // send data to the backend, route "/actions", method "POST"
     fetch("/actions", {
-      method: 'POST', 
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        "Content-Type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(finalData)
+      body: JSON.stringify(finalData),
     })
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     // console.log(beginDate, beginTime, endDate, endTime);
     console.log(data);
   };
@@ -54,7 +54,7 @@ function AddAction() {
   return (
     <div>
       <Title />
-      <div className="mt-16">
+      <div id="contenu" className="mt-16">
         {/* FORM */}
         <form
           className="flex flex-col sm:mx-10 items-center mx-3"

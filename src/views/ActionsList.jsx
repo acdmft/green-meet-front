@@ -99,7 +99,7 @@ function ActionsList() {
   };
 
   return (
-    <div className="flex flex-col justify-center">
+    <div id="contenu" className="flex flex-col justify-center">
       <div>
         <form
           className="flex flex-row mx-auto items-center w-1/2 space-x-4"
@@ -118,7 +118,7 @@ function ActionsList() {
               name="city"
               id="city"
               placeholder="Entrez votre ville"
-            // value={localStorage.getItem("email")}
+              // value={localStorage.getItem("email")}
             />
             {/* Message d'erreur si input invalide : */}
             {errors.city && (
