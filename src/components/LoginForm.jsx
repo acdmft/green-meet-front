@@ -1,16 +1,40 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { useForm } from "react-hook-form";
+// Components 
 import Button from "./Button";
+// Context 
+import { AuthContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
+  // context 
+  const context = useContext(AuthContext);
+  // navigation 
+  const navigate = useNavigate();
+  // react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => console.log(data);
-
+  // send login form data to the backend ("/login" route)
+  const onSubmit = (data) => {
+    console.log(data);
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    })
+    .then((res)=> {
+      if (res.status >= 200) {
+        context.setIsAuthenticated(true);
+        navigate("/");
+      }
+    })
+    .catch((err) => console.log(err));    
+  }
   // Si la checkbox est activée, on garde le email dans le local storage :
   // if (rememberMe === true) {
   //   localStorage.setItem("email", data.email);
@@ -37,7 +61,7 @@ function LoginForm() {
             {...register("email", {
               required: true,
               maxLength: 150,
-              minLength: 6,
+              // minLength: 6,
               pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i,
             })}
             type="text"
@@ -57,7 +81,7 @@ function LoginForm() {
           <label htmlFor="password">Password</label>
           <input
             className="border-2"
-            {...register("password", { required: true, maxLength: 6 })}
+            {...register("password", { required: true })}
             type="password"
             name="password"
             id="password"
