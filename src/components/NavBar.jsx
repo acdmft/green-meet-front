@@ -1,10 +1,50 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
+import { AuthContext } from "../App";
 
 function NavBar() {
+  // context isAuthenticat
+  const context = useContext(AuthContext);
+  // state of the menu
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const pages = [
+    { name: "Aller au contenu", href: "#contenu" },
+    { name: "Accueil", href: "/" },
+    { name: "Les actions", href: "/actions" },
+    { name: "Créer mon action", href: "/addAction" },
+  ];
+  const connexionLinks = context.isAuthenticated ? [
+    {name: "Déconnexion", href: ""}
+  ] : [
+    { name: "Connexion", href: "/login" },
+    { name: "S'enregistrer", href: "/register" },
+  ];
+  const navLinks = pages.map((page, index) => {
+    // if (index !== 0) {
+      return (
+        <a
+          key={page}
+          className="no-underline text-gmkaki font-semibold hover:text-gray-600"
+          href={page.href}
+        >
+          {page.name}
+        </a>
+      );
+    // }
+  });
+  const navConnexion = connexionLinks.map((cl) => (
+    <a
+      key={cl}
+      className="no-underline text-gmkaki font-semibold hover:text-gray-600"
+      href={cl.href}
+    >
+      {cl.name}
+    </a>
+  ));
+
   return (
     <div className="sticky top-0 bg-white">
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} navLinks={navLinks} navConnexion={navConnexion} />
       {menuOpen && (
         <MobileMenu>
           {/* <div className=""> */}
@@ -17,36 +57,8 @@ function NavBar() {
   );
 }
 
-const pages = [
-  { name: "Aller au contenu", href: "#contenu" },
-  { name: "Accueil", href: "/" },
-  { name: "Les actions", href: "/actions" },
-  { name: "Créer mon action", href: "/addAction" },
-];
-const connexionLinks = [
-  { name: "Connexion", href: "/login" },
-  { name: "S'enregistrer", href: "/register" },
-];
-const navLinks = pages.map((page) => (
-  <a
-    key={page}
-    className="no-underline text-gmkaki font-semibold hover:text-gray-600"
-    href={page.href}
-  >
-    {page.name}
-  </a>
-));
-const navConnexion = connexionLinks.map((cl) => (
-  <a
-    key={cl}
-    className="no-underline text-gmkaki font-semibold hover:text-gray-600"
-    href={cl.href}
-  >
-    {cl.name}
-  </a>
-));
 
-const Navbar = ({ menuOpen, setMenuOpen }) => (
+const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
   <div className="flex items-center justify-between p-4">
     <div className="flex items-center">
       <img src="../../img/logo1.png" className="h-10 w-10" />

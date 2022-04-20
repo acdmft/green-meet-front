@@ -1,14 +1,42 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useForm } from "react-hook-form";
 import Button from "./Button";
+// Context 
+import { AuthContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
+  // context 
+  const context = useContext(AuthContext);
+  // navigation 
+  const navigate = useNavigate();
+  // react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    // remove confirmPassword key, value form request to pass validation 
+    delete data.confirmPassword;
+    fetch("/register", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(data)
+
+    })
+    .then((data) => {
+      if (data.status === 201) {
+        context.setIsAuthenticated(true);
+        navigate("/"); 
+      }
+    })
+    .catch((err)=> console.log(err));
+  }
 
   return (
     <div>
@@ -54,8 +82,13 @@ function RegisterForm() {
               className="border-2"
               type="password"
               name="confirmPassword"
-              {...register("confirmPassword", { required: true, minLength: 6 })}
+              {...register("confirmPassword", { required: true })}
             />
+            {errors.confirmPassword && (
+              <span className="w-full text-red-600 italic text-xs">
+                Le mot de passe ne correspond pas
+              </span>
+            )}
           </div>
           <div className="flex flex-col">
             <label htmlFor="lastName">Lastname</label>
