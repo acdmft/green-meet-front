@@ -19,15 +19,15 @@ function AddAction() {
     const endTime = data.end.split("T")[1];
     // form address
     const address = {
-      streetType: data.streetType,
-      streetNumber: data.streetNumber,
-      streetName: data.streetName,
+      strTyp: data.streetType,
+      strNumb: data.streetNumber,
+      strNam: data.streetName,
       zipCode: data.zipCode,
     };
     // data to send
     const finalData = {
       title: data.title,
-      address: data.address,
+      address: JSON.stringify(address),
       beginDate: beginDate,
       beginTime: beginTime,
       endDate: endDate,
