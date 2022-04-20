@@ -1,9 +1,13 @@
 import { React, useContext, createContext, useState } from "react";
 
 // Components
-
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+
+// React toastify 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 // React-router-dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -49,6 +53,7 @@ function App() {
           <Footer />
         </div>
       </BrowserRouter>
+      <ToastContainer />
     </AuthContext.Provider>
   );
 }

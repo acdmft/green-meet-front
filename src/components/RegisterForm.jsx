@@ -1,14 +1,16 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Button from "./Button";
-// Context 
+// Context
 import { AuthContext } from "../App";
 import { useNavigate } from "react-router-dom";
+// toastify
+import { toast } from "react-toastify";
 
 function RegisterForm() {
-  // context 
+  // context
   const context = useContext(AuthContext);
-  // navigation 
+  // navigation
   const navigate = useNavigate();
   // react-hook-form
   const {
@@ -19,24 +21,29 @@ function RegisterForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    // remove confirmPassword key, value form request to pass validation 
+    // remove confirmPassword key, value form request to pass validation
     delete data.confirmPassword;
     fetch("/register", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        "Content-Type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(data)
-
+      body: JSON.stringify(data),
     })
-    .then((data) => {
-      if (data.status === 201) {
-        context.setIsAuthenticated(true);
-        navigate("/"); 
-      }
-    })
-    .catch((err)=> console.log(err));
-  }
+      .then((data) => {
+        if (data.status === 201) {
+          toast.success("Le nouveau compte est créé !");
+          context.setIsAuthenticated(true);
+          return navigate("/");
+        } else {
+          console.log(data.statusText)
+          return toast.error(data.statusText);
+        }
+      })
+      .catch((err) =>
+        toast.error("Quelque chose s'est mal passé, réessayez plus tard!")
+      );
+  };
 
   return (
     <div>

@@ -5,6 +5,9 @@ import Button from "./Button";
 // Context 
 import { AuthContext } from "../App";
 import { useNavigate } from "react-router-dom";
+//toastify
+import { toast } from "react-toastify";
+
 
 function LoginForm() {
   // context 
@@ -19,7 +22,6 @@ function LoginForm() {
   } = useForm();
   // send login form data to the backend ("/login" route)
   const onSubmit = (data) => {
-    console.log(data);
     fetch("/login", {
       method: "POST",
       headers: {
@@ -28,12 +30,15 @@ function LoginForm() {
       body: JSON.stringify(data)
     })
     .then((res)=> {
-      if (res.status >= 200) {
+      if (res.status >= 200 && res.status < 400) {
+        toast.success("Tu es connecté!")
         context.setIsAuthenticated(true);
         navigate("/");
+      } else {
+        toast.error(res.statusText);
       }
     })
-    .catch((err) => console.log(err));    
+    .catch((err) => toast.error("Quelque chose s'est mal passé, réessayez plus tard!"));  
   }
   // Si la checkbox est activée, on garde le email dans le local storage :
   // if (rememberMe === true) {
