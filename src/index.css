@@ -10,3 +10,9 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title {
+  background-image: url("../public/img/dechets4.jpg");
+  background-size: cover;
+  background-position: bottom;
+}

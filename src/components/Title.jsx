@@ -5,7 +5,7 @@ import "../index.css";
 function Title() {
   return (
     <div>
-      <h1 className="text-gmgreen text-lg md:text-xl lg:text-3xl my-7 flex justify-center">
+      <h1 className="title text-gmgreen-medium h-screen text-lg md:text-xl lg:text-3xl flex justify-center font-bold items-center pb-52">
         Green Meet, les rencontres écolos
       </h1>
     </div>
