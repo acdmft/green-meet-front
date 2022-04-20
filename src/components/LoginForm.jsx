@@ -44,7 +44,7 @@ function LoginForm() {
             name="email"
             id="email"
             placeholder="email"
-            // value={localStorage.getItem("email")}
+          // value={localStorage.getItem("email")}
           />
           {/* Message d'erreur si input invalide : */}
           {errors.email && (
@@ -57,7 +57,7 @@ function LoginForm() {
           <label htmlFor="password">Password</label>
           <input
             className="border-2"
-            {...register("password", { required: true, maxLength: 6 })}
+            {...register("password", { required: true })}
             type="password"
             name="password"
             id="password"
