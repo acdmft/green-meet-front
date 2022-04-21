@@ -34,7 +34,8 @@ function AddAction() {
       beginTime: beginTime,
       endDate: endDate,
       endTime: endTime,
-      city: data.city,
+      // convert city input into string with "-" instead of " "
+      city: data.city.split(/[\s-]+/).reduce((prev, curr)=> `${prev.toLowerCase()}-${curr.toLowerCase()}`),
       description: data.description,
       // should be taken from input value
       type: "ramassage",
