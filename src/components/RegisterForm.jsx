@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 // toastify
 import { toast } from "react-toastify";
 
-function RegisterForm() {
+function RegisterForm(props) {
   // context
   const context = useContext(AuthContext);
   // navigation
@@ -17,8 +17,11 @@ function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
+    watch,
   } = useForm();
+  // watch password and confirm password fields 
+  const watchPassword = watch("password", props.password);
+  const watchConfirmPassword = watch("confirmPassword", props.confirmPassword);
 
   const onSubmit = (data) => {
     // remove confirmPassword key, value form request to pass validation
@@ -68,6 +71,7 @@ function RegisterForm() {
               </span>
             )}
           </div>
+          {/* **** PASSWORD INPUT *****/}
           <div className="flex flex-col">
             <label htmlFor="password">Password</label>
             <input
@@ -82,6 +86,7 @@ function RegisterForm() {
               </span>
             )}
           </div>
+          {/* **** CONFIRM PASSWORD INPUT *****/}
           <div className="flex flex-col">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
@@ -94,6 +99,9 @@ function RegisterForm() {
               <span className="w-full text-red-600 italic text-xs">
                 Le mot de passe ne correspond pas
               </span>
+            )}
+            {watchConfirmPassword != watchPassword && (
+              <p> Le mot de passe et la confirmation ne correspondent pas!</p>
             )}
           </div>
           <div className="flex flex-col">
