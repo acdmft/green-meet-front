@@ -9,7 +9,7 @@ function ActionCard(props) {
   };
   return (
     <div className="">
-      <div className="hover:bg-gmvert-dark ease-in-out transform translate hover:-translate-y-1 hover:scale-105 hover:transition-all duration-500 p-6 h-64 rounded-lg border bg-gray-800 border-gray-700 m-5 flex flex-col relative">
+      <div className="hover:bg-gmvert-dark ease-in-out transform translate hover:-translate-y-1 hover:scale-105 hover:transition-all duration-500 p-6 h-64 rounded-lg border bg-gray-800 opacity-80 border-gray-700 m-5 flex flex-col relative">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
             {props.title}
