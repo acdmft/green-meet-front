@@ -46,8 +46,10 @@ function ActionDetails(props) {
         <img></img>
         <div className="flex flex-row">
         </div>
-        <div className="flex flex-row-reverse justify-between">
-          <Button onClick={handleSubmit}>Rejoindre l'action</Button>
+        <div className="md:flex md:flex-row-reverse justify-between">
+          <div className="mb-7 md:mb-0">
+            <Button onClick={handleSubmit}>Rejoindre l'action</Button>
+          </div>
           <div>
             <h4 className="text-gmgreen-light text-lg">Organisateur : </h4>
             <p className="text-lg pl-2">{action.organiser_id}</p>
