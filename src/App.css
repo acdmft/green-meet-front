@@ -97,3 +97,12 @@
   background-repeat: no-repeat;
   background-position: 0% 50%;
 }
+.registerPage {
+  background-image: url("../public/img/plasticpoub.jpg") ;
+  background-position: cover;
+
+}
+.contactPage {
+  background-image: url("../public/img/plasticpoub.jpg") ;
+  background-position: cover;
+}
