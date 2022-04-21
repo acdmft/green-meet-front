@@ -83,7 +83,6 @@
 .actionsList {
   background-image: url("../public/img/dechets4.jpg");
   background-size: cover;
-
 }
 
 .addAction {
@@ -92,9 +91,9 @@
   background-position: right bottom;
   background-repeat: no-repeat;
 }
- .loginPage {
+.loginPage {
   background-image: url("../public/img/pavement.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0% 50%;
- }
+}

@@ -16,6 +16,7 @@ module.exports = {
         gmvert: {
           light: "rgba(145, 188, 179, 1)",
           dark: "rgba(33, 106, 92, 1)",
+          darkOpacity: "rgba(33, 106, 92, 0.5)",
         },
       },
     },
