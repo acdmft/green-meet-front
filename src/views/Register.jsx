@@ -4,7 +4,7 @@ import Title from "../components/Title";
 
 function Register() {
   return (
-    <div className="registerPage bg-green-50 lg:h-screen">
+    <div className="registerPage h-screen">
             <div className="pt-24">
         <h1 className="text-center text-lg md:text-xl lg:text-3xl">
          S'enregistrer
