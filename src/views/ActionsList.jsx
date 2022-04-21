@@ -102,7 +102,7 @@ function ActionsList() {
     <div id="contenu" className="flex flex-col justify-center">
       <div>
         <form
-          className="flex flex-row mx-auto items-center w-1/2 space-x-4"
+          className="flex flex-row mx-auto items-center w-1/2 space-x-4 my-10"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col w-full">
@@ -133,7 +133,7 @@ function ActionsList() {
           </Button>
         </form>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-6">
         {!userInput ? RenderActions() : RenderFilteredActions()}
       </div>
     </div>
