@@ -26,6 +26,8 @@ function RegisterForm(props) {
   const onSubmit = (data) => {
     // remove confirmPassword key, value form request to pass validation
     delete data.confirmPassword;
+    // convert city input into string with "-" instead of " "
+    data.city = data.city.split(/[\s-]+/).reduce((prev, curr)=> `${prev.toLowerCase()}-${curr.toLowerCase()}`);
     fetch("/register", {
       method: "POST",
       headers: {
