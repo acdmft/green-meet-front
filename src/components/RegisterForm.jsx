@@ -36,8 +36,7 @@ function RegisterForm() {
           context.setIsAuthenticated(true);
           return navigate("/");
         } else {
-          console.log(data.statusText)
-          return toast.error(data.statusText);
+          return toast.error("L'email existe déjà");
         }
       })
       .catch((err) =>
