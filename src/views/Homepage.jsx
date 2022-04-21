@@ -44,7 +44,7 @@ function Homepage() {
           eius!
         </p>
       </div>
-      <div className="flex justify-center mb-5">
+      <div className="flex justify-center mx-6 mb-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {actions &&
             actions.slice(0, 3).map((action) => {

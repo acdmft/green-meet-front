@@ -6,10 +6,9 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
-// React toastify 
+// React toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 // React-router-dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -54,7 +53,9 @@ function App() {
               <Route exact path="/profile" element={<Profile />} />
             </Routes>
           </div>
-          <Footer />
+          <div className="bg-gray-800">
+            <Footer />
+          </div>
         </div>
       </BrowserRouter>
       <ToastContainer />

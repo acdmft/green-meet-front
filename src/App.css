@@ -2,6 +2,7 @@
 
 * {
   font-family: "Akshar";
+  letter-spacing: 0.1em;
 }
 
 .App {
@@ -78,4 +79,9 @@
   100% {
     transform: scale(0);
   }
+}
+.actionsList {
+  background-image: url("../public/img/dechets4.jpg");
+  background-size: cover;
+
 }
