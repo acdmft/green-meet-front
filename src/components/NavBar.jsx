@@ -5,7 +5,6 @@ import { AuthContext } from "../App";
 // toastify
 import { toast } from "react-toastify";
 
-
 function NavBar() {
   // context isAuthenticat
   const context = useContext(AuthContext);
@@ -21,8 +20,8 @@ function NavBar() {
         context.setIsAuthenticated(false);
         toast.success("Tu es déconnecté");
       })
-      .catch((err)=>toast.error(err));
-  }
+      .catch((err) => toast.error(err));
+  };
 
   const pages = [
     // { name: "Aller au contenu", href: "#contenu" },
@@ -44,7 +43,7 @@ function NavBar() {
     return (
       <Link
         key={index}
-        className="text-white font-semibold hover:text-gmlime-light"
+        className="text-white font-semibold hover:text-gmlime-light ease-in-out transform translate hover:transition-all duration-500"
         to={page.href}
       >
         {page.name}
@@ -55,9 +54,9 @@ function NavBar() {
   const navConnexion = connexionLinks.map((cl, index) => (
     <Link
       key={index}
-      className="text-white font-semibold hover:text-gmlime-light"
+      className="text-white font-semibold hover:text-gmlime-light ease-in-out transform translate hover:transition-all duration-500"
       to={cl.href}
-      onClick={()=>(handleClick(cl))}
+      onClick={() => handleClick(cl)}
     >
       {cl.name}
     </Link>
@@ -102,7 +101,7 @@ const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
       <div className="flex flex-row space-x-32 text-white">
         <div className="space-x-10">
           <a
-            className="text-white font-semibold hover:text-gmlime-light"
+            className="text-white font-semibold hover:text-gmlime-light ease-in-out transform translate hover:transition-all duration-500"
             href="#contenu"
           >
             Aller au contenu
