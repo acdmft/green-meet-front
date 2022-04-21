@@ -1,12 +1,28 @@
 import { React, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+// isAuthenticated context
 import { AuthContext } from "../App";
+// toastify
+import { toast } from "react-toastify";
+
 
 function NavBar() {
   // context isAuthenticat
   const context = useContext(AuthContext);
   // state of the menu
   const [menuOpen, setMenuOpen] = useState(false);
+  // logout user if he clicked on 'Deconnexion'
+  const handleClick = (cl) => {
+    if (cl.name !== "Déconnexion") {
+      return;
+    }
+    fetch("logout")
+      .then((res) => {
+        context.setIsAuthenticated(false);
+        toast.success("Tu es déconnecté");
+      })
+      .catch((err)=>toast.error(err));
+  }
 
   const pages = [
     // { name: "Aller au contenu", href: "#contenu" },
@@ -41,6 +57,7 @@ function NavBar() {
       key={index}
       className="text-white font-semibold hover:text-gmlime-light"
       to={cl.href}
+      onClick={()=>(handleClick(cl))}
     >
       {cl.name}
     </Link>

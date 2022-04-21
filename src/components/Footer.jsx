@@ -16,10 +16,10 @@ const pages = [
   { name: "Contacts", href: "/contact" },
 ];
 
-const navLinks = pages.map((page) => {
+const navLinks = pages.map((page, index) => {
   return (
     <a
-      key={page}
+      key={index}
       href={page.href}
       className="text-gmkaki font-semibold hover:text-gray-600 text-xs md:text-sm"
     >

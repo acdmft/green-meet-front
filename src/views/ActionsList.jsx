@@ -57,10 +57,10 @@ function ActionsList() {
     }
     return actions
       .slice(0, 12)
-      .map((action) => (
+      .map((action, index) => (
         <ActionCard
           id={action.action_id}
-          key={action.title}
+          key={index}
           title={action.title}
           description={action.description}
         />
