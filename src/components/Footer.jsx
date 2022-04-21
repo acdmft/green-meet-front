@@ -21,7 +21,7 @@ const navLinks = pages.map((page, index) => {
     <a
       key={index}
       href={page.href}
-      className="text-white font-semibold hover:text-gmlime-light text-xs md:text-sm"
+      className="text-white font-semibold hover:text-gmlime-light text-xs md:text-sm  ease-in-out transform translate hover:transition-all duration-500"
     >
       {page.name}
     </a>
