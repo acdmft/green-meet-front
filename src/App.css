@@ -85,3 +85,10 @@
   background-size: cover;
 
 }
+
+.addAction {
+  background-image: url("../public/img/poubelle-crop.jpg");
+  background-size: cover;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}

@@ -7,6 +7,8 @@ import Title from "../components/Title";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+import "../App.css";
+
 function AddAction() {
   const navigate = useNavigate();
   const {
@@ -60,8 +62,10 @@ function AddAction() {
   };
 
   return (
-    <div>
-      <Title />
+    <div className="addAction">
+      <div className="pt-24">
+        <h1 className="text-center text-white text-lg md:text-xl lg:text-3xl">Organiser une action</h1>
+      </div>
       <div id="contenu" className="mt-16">
         {/* FORM */}
         <form
@@ -71,10 +75,10 @@ function AddAction() {
           {/* Titre */}
           <div className="w-full gap-4 lg:w-1/2 mb-10 space-y-10">
             <div className="flex flex-col relative">
-              <label htmlFor="title">Titre de l'action</label>
+              <label className="text-white" htmlFor="title">Titre de l'action</label>
               <input
                 name="title"
-                className="border-2"
+                className="border-2 rounded"
                 {...register("title", {
                   required: true,
                   maxLength: 20,
@@ -89,7 +93,7 @@ function AddAction() {
             </div>
 
             {/* Adresse */}
-            <div className="space-y-6 border-2 p-4 bg-gray-100 py-10">
+            <div className="space-y-6 border-2 rounded p-4 bg-gray-100 py-10">
               <div className="space-y-2 relative">
                 <label
                   htmlFor="adress"
@@ -106,7 +110,7 @@ function AddAction() {
                     <div className="flex flex-col">
                       <label htmlFor="streetNumber">N° de rue</label>
                       <input
-                        className="border-2 w-20"
+                        className="border-2 rounded w-20"
                         name="streetNumber"
                         type="number"
                         {...register("streetNumber", { min: 1, maxLength: 4 })}
@@ -117,7 +121,7 @@ function AddAction() {
                       <label htmlFor="streetType">Type</label>
                       <select
                         {...register("streetType")}
-                        className="border-2 w-28 h-7"
+                        className="border-2 rounded w-28 h-7"
                         name="streetType"
                       >
                         <option selected value="none"></option>
@@ -138,7 +142,7 @@ function AddAction() {
                     <div className="flex flex-col">
                       <label htmlFor="streetName">Nom de la rue</label>
                       <input
-                        className="border-2"
+                        className="border-2 rounded"
                         name="streetName"
                         {...register("streetName", { required: true })}
                       />
@@ -162,7 +166,7 @@ function AddAction() {
                   <label htmlFor="zipCode">Code Postal</label>
                   <input
                     name="zipCode"
-                    className="border-2 w-32"
+                    className="border-2 rounded w-32"
                     type="number"
                     {...register("zipCode", { min: 1, maxLength: 5 })}
                   />
@@ -171,7 +175,7 @@ function AddAction() {
                 <div className="flex flex-col flex-grow relative">
                   <label htmlFor="city">Ville</label>
                   <input
-                    className="border-2"
+                    className="border-2 rounded"
                     name="city"
                     {...register("city", { required: true })}
                   />
@@ -187,11 +191,11 @@ function AddAction() {
             {/* DATE Horaires */}
             <div className="flex flex-col md:flex-row w-full place-content-evenly md:space-x-1 space-y-4 md:space-y-0">
               <div className="flex flex-col">
-                <label htmlFor="begin">Date de début</label>
+                <label className="text-white" htmlFor="begin">Date de début</label>
                 <input
                   name="begin"
                   id="begin"
-                  className="border-2"
+                  className="border-2 rounded"
                   type="datetime-local"
                   placeholder="local"
                   {...register("begin", { required: true })}
@@ -202,12 +206,12 @@ function AddAction() {
                   </span>
                 )}
               </div>
-              <div className="flex flex-col">
-                <label htmlFor="end">Date de fin</label>
+              <div className="flex flex-col ">
+                <label className="text-white" htmlFor="end">Date de fin</label>
                 <input
                   name="end"
                   id="end"
-                  className="border-2"
+                  className="border-2 rounded"
                   type="datetime-local"
                   placeholder="local"
                   {...register("end", { required: true })}
@@ -221,11 +225,11 @@ function AddAction() {
             </div>
 
             {/* DESCRIPTION */}
-            <div className="flex flex-col relative">
-              <label htmlFor="description">Description</label>
+            <div className="flex flex-col relative ">
+              <label className="text-white" htmlFor="description">Description</label>
               <textarea
                 rows="12"
-                className="border-2 h-full"
+                className="border-2 rounded h-full"
                 {...register("description", {
                   required: true,
                   max: 200,
@@ -242,7 +246,10 @@ function AddAction() {
               )}
             </div>
           </div>
+          <div className="mb-10">
+
           <Button type="submit">Créer l'action</Button>
+          </div>
         </form>
       </div>
     </div>
