@@ -35,7 +35,7 @@ function LoginForm() {
         context.setIsAuthenticated(true);
         navigate("/");
       } else {
-        toast.error(res.statusText);
+        toast.error("Identifiant ou mot de passe incorrect");
       }
     })
     .catch((err) => toast.error("Quelque chose s'est mal passé, réessayez plus tard!"));  
