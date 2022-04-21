@@ -91,7 +91,7 @@ function ActionsList() {
     return filteredActions.map((action) => (
       <ActionCard
         id={action.action_id}
-        key={action.title}
+        key={action.action_id}
         title={action.title}
         description={action.description}
       />
