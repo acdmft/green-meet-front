@@ -79,3 +79,8 @@
     transform: scale(0);
   }
 }
+.actionsList {
+  background-image: url("../public/img/dechets4.jpg");
+  background-size: cover;
+
+}

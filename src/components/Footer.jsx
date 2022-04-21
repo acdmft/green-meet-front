@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="text-center m-6">
+    <div className="text-center m-2">
       <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row md:space-x-8 md:justify-center ">
         {navLinks}
       </div>
@@ -21,7 +21,7 @@ const navLinks = pages.map((page) => {
     <a
       key={page}
       href={page.href}
-      className="text-gmkaki font-semibold hover:text-gray-600 text-xs md:text-sm"
+      className="text-white font-semibold hover:text-gmlime-light text-xs md:text-sm"
     >
       {page.name}
     </a>

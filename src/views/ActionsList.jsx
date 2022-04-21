@@ -99,7 +99,7 @@ function ActionsList() {
   };
 
   return (
-    <div id="contenu" className="flex flex-col justify-center">
+    <div id="contenu" className="flex flex-col justify-center actionsList">
       <div>
         <form
           className="flex flex-row mx-auto items-center w-1/2 space-x-4 my-10"
