@@ -11,14 +11,15 @@ function ContactAdmin() {
   const onSubmit = (data) => console.log(data);
 
   return (
+    <div className="contactPage">
     <div id="contenu">
       <form
-        className="flex flex-col mx-auto items-center"
+        className="flex flex-col mx-auto items-center pt-10"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="grid grid-rows-3 grid-flow-col gap-4 md:w-1/2 mb-12 space-x-8">
-          <div className="flex flex-col">
-            <label htmlFor="lastName">Lastname</label>
+        <div className="grid grid-rows-3 grid-flow-col space-x-8">
+          <div className="flex flex-col mx-8 w-60 md:w-96">
+            <label htmlFor="lastName">Nom</label>
             <input
               className="border-2"
               name="lastName"
@@ -30,8 +31,8 @@ function ContactAdmin() {
               </span>
             )}
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="firstName">Firstname</label>
+          <div className="flex flex-col w-60 md:w-96">
+            <label htmlFor="firstName">Prénom</label>
             <input
               className="border-2"
               name="firstName"
@@ -44,7 +45,7 @@ function ContactAdmin() {
             )}
           </div>
         </div>
-        <div className="flex flex-col pl-8">
+        <div className="flex flex-col w-60 md:w-96">
           <label htmlFor="description">Commentaire</label>
           <textarea
             rows="15"
@@ -64,9 +65,13 @@ function ContactAdmin() {
             </span>
           )}
         </div>
-        <Button type="submit">Soumettre</Button>
+        <div className="mt-10 mb-10">
+          <Button type="submit">Soumettre</Button>
+        </div>
       </form>
     </div>
+    </div>
+    
   );
 }
 
