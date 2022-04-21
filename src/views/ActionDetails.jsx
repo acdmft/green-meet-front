@@ -45,8 +45,13 @@ function ActionDetails(props) {
         <h2 className="text-gmlime-light text-2xl mb-10">{action.title}</h2>
         <img></img>
         <div className="flex flex-row">
-          <h4 className="text-gmgreen-light text-lg">Organisateur : </h4>
-          <p className="text-lg pl-2">{action.organiser_id}</p>
+        </div>
+        <div className="flex flex-row-reverse justify-between">
+          <Button onClick={handleSubmit}>Rejoindre l'action</Button>
+          <div>
+            <h4 className="text-gmgreen-light text-lg">Organisateur : </h4>
+            <p className="text-lg pl-2">{action.organiser_id}</p>
+          </div>
         </div>
         <div className="flex flex-row">
           <h4 className="text-gmgreen-light text-lg">Date : </h4>
@@ -67,9 +72,6 @@ function ActionDetails(props) {
         <div>
           <h4 className="text-gmgreen-light text-lg">Détails : </h4>
           <p className="text-md">{action.description}</p>
-        </div>
-        <div>
-          <Button onClick={handleSubmit}>Rejoindre l'action</Button>
         </div>
         <div>
           <h4 className="text-gmgreen-light text-lg">
