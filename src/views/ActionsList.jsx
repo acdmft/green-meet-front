@@ -20,7 +20,8 @@ function ActionsList() {
   } = useForm();
 
   const onSubmit = (data) => {
-    setUserInput(data.city.toLowerCase());
+    let convertedInput = data.city.split(/[\s-]+/).reduce((prev, curr)=> `${prev.toLowerCase()}-${curr.toLowerCase()}`);
+    setUserInput(convertedInput);
   };
 
   useEffect(() => {

@@ -15,6 +15,9 @@ function ActionDetails(props) {
       .then((res) => res.json())
       .then((res) => {
         console.log(id);
+        let city = res.data.city.charAt(0).toUpperCase() + res.data.city.slice(1);
+        res.data.city = city.replace(/(-)/gi, " ");
+        console.log(res.data.city);
         setAction(res.data);
       })
       .catch((err) => {

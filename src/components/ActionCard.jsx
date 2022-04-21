@@ -2,6 +2,7 @@ import { React } from "react";
 import ArrowButton from "./ArrowButton";
 import { useNavigate } from "react-router-dom";
 
+// get action details (button 'voir plus')
 function ActionCard(props) {
   let navigate = useNavigate();
   const handleClick = (id) => {
