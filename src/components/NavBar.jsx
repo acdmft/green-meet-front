@@ -144,7 +144,7 @@ const MobileMenu = ({ children }) => (
 const MenuAlt4Svg = ({ menuOpen }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className={`transition duration-100 ease h-8 w-8 ${
+    className={` text-white mr-10 transition duration-100 ease h-8 w-8 ${
       menuOpen ? "transform rotate-90" : ""
     }`}
     viewBox="0 0 20 20"

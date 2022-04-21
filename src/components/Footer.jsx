@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div className="text-center m-2">
-      <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row md:space-x-8 md:justify-center ">
+      <div className="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-8 sm:justify-center ">
         {navLinks}
       </div>
     </div>

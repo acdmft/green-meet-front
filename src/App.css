@@ -97,3 +97,9 @@
   background-repeat: no-repeat;
   background-position: 0% 50%;
 }
+.registerPage {
+  background-image: url("../public/img/undraw7.svg") ;
+  background-repeat: no-repeat;
+  background-size: 25%;
+  background-position: 90% 40%;
+}
