@@ -1,14 +1,41 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "../components/Button";
+// toastify 
+import { toast } from "react-toastify";
+// navigation 
+import { useNavigate } from "react-router-dom";
+
 
 function ContactAdmin() {
+  // navigation 
+  const navigate = useNavigate();
+  // react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    fetch("/contact",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(data),
+    })
+    .then((data) => {
+      if (data.status === 201) {
+        toast.success("Le message est envoyé !");
+        return navigate("/");
+      } else {
+        return toast.error("Quelque chose s'est mal passé, réessayez plus tard!");
+      }
+    })
+    .catch((err) =>
+      toast.error("Quelque chose s'est mal passé, réessayez plus tard!")
+    )
+  };
 
   return (
     <div className="contactPage">
@@ -63,11 +90,11 @@ function ContactAdmin() {
           </div>
         </div>
         <div className="flex flex-col w-60 md:w-96">
-          <label htmlFor="description">Commentaire</label>
+          <label htmlFor="text">Commentaire</label>
           <textarea
             rows="15"
             className="border-2 h-full"
-            {...register("Description", {
+            {...register("text", {
               required: true,
               max: 200,
               min: 50,
@@ -76,7 +103,7 @@ function ContactAdmin() {
             })}
           />
 
-          {errors.description && (
+          {errors.text && (
             <span className="w-full text-red-600 italic text-xs">
               Veuillez indiquer votre message
             </span>
