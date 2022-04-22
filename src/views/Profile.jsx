@@ -40,6 +40,9 @@ function Profile() {
       </div>
     );
   };
+  // let city =
+  //         user[0].city.charAt(0).toUpperCase() + user[0].city.slice(1);
+  //       user[0].city = city.replace(/(-)/gi, " ");
 
   const RenderUser = () => {
     return (
@@ -49,7 +52,8 @@ function Profile() {
         </h2>
         <p>
           <span className="">Ville : </span>
-          {user[0].city.replace("-", " ")}
+          {user[0].city.replace(/(-)/gi, " ").charAt(0).toUpperCase() +
+            user[0].city.slice(1)}
         </p>
         <p>Email : {user[0].email}</p>
       </div>
