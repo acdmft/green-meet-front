@@ -81,8 +81,9 @@
   }
 }
 .actionsList {
-  background-image: url("../public/img/dechets4.jpg");
+ background-image: url("../public/img/undrawlistactions.svg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .addAction {
