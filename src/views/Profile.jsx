@@ -21,14 +21,16 @@ function Profile() {
     fetch("/account/actions")
       .then((res) => res.json())
       .then((res) => {
-        setActions([res.data]);
+        if (res.data) {
+          setActions([res.data]);
+        }
       });
   }, [toggle]);
 
   const RenderNoActions = () => {
     return <p>Vous n'êtes inscrit à aucune action</p>;
   };
-
+  console.log(actions.length);
   return (
     <div>
       {user.length !== 0 && (
