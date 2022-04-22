@@ -40,7 +40,11 @@ function App() {
       .then((res) => res.json())
       .then((res) => {
         console.log("CONNECTE", res);
-        setIsAuthenticated(true);
+        if (res.message === "You are not logged in") {
+          setIsAuthenticated(false);
+        } else {
+          setIsAuthenticated(true);
+        }
       });
   }, []);
 

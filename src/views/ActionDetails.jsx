@@ -4,6 +4,8 @@ import ContactForm from "../components/ContactForm";
 import Button from "../components/Button";
 import { AuthContext } from "../App";
 import ActionsList from "./ActionsList";
+import { toast } from "react-toastify";
+
 
 import "../App.css";
 
@@ -43,16 +45,21 @@ function ActionDetails(props) {
         console.error("ERROR", err);
       });
   }, []);
-
+  // Join action
   const handleSubmit = () => {
     if (context.isAuthenticated) {
       fetch(`/actions/${id}/join`, {
         method: "POST",
       })
-        .then(() => {
-          console.log("OK");
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("Vous avez rejoint l'action !")
+          } else {
+            toast.error("vous avez déjà rejoint l'action !")
+          }
         })
         .catch((err) => {
+          toast.error("Quelque chose s'est mal passé, réessayez plus tard !")
           console.log(err);
         });
       console.log(id);
