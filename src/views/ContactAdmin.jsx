@@ -25,7 +25,7 @@ function ContactAdmin() {
       >
         <div className="grid grid-rows-3 grid-flow-col space-x-8">
           <div className="flex flex-col mx-8 w-60 md:w-96">
-            <label htmlFor="lastName">Nom</label>
+            <label className="font-bold" htmlFor="lastName">Nom</label>
             <input
               className="border-2"
               name="lastName"
@@ -38,7 +38,7 @@ function ContactAdmin() {
             )}
           </div>
           <div className="flex flex-col w-60 md:w-96">
-            <label htmlFor="firstName">Prénom</label>
+            <label className="font-bold" htmlFor="firstName">Prénom</label>
             <input
               className="border-2"
               name="firstName"
@@ -51,7 +51,7 @@ function ContactAdmin() {
             )}
           </div>
           <div className="flex flex-col w-60 md:w-96">
-            <label htmlFor="email">Email</label>
+            <label className="font-bold" htmlFor="email">Email</label>
             <input
               name="email"
               className="border-2 rounded"
@@ -69,7 +69,7 @@ function ContactAdmin() {
           </div>
         </div>
         <div className="flex flex-col w-60 md:w-96">
-          <label htmlFor="description">Commentaire</label>
+          <label className="font-bold" htmlFor="description">Commentaire</label>
           <textarea
             rows="15"
             className="border-2 h-full"
