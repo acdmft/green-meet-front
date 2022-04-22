@@ -21,7 +21,7 @@ function ContactForm() {
       >
         {/* Titre */}
         <div className="w-full gap-4 lg:w-1/2 mb-10 space-y-5">
-          <div className="flex flex-col relative">
+          <div className="flex flex-col relative font-bold">
             <label htmlFor="title">Objet de votre message</label>
             <input
               name="title"
@@ -33,14 +33,14 @@ function ContactForm() {
               })}
             />
             {errors.title && (
-              <span className="w-full text-red-600 italic text-xs absolute top-14">
+              <span className="w-full text-red-600 text-xs absolute top-14">
                 Merci d'indiquer l'objet de votre message'
               </span>
             )}
           </div>
 
           {/* DESCRIPTION */}
-          <div className="flex flex-col relative">
+          <div className="flex flex-col relative font-bold">
             <label htmlFor="description">Description</label>
             <textarea
               rows="12"

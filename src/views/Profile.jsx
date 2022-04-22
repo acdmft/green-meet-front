@@ -43,7 +43,7 @@ function Profile() {
 
   const RenderUser = () => {
     return (
-      <div className="flex flex-col justify-center mx-auto items-center m-11">
+      <div className=" profilePage flex flex-col justify-center mx-auto items-center m-11">
         <h2 className="text-3xl">
           {user[0].last_name} {user[0].first_name}
         </h2>

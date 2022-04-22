@@ -71,7 +71,7 @@ function ActionDetails(props) {
   const RenderActions = () => {
     if (action) {
       return (
-        <div id="contenu" className="flex flex-col m-10 space-y-2">
+        <div id="contenu" className=" actionsDetail flex flex-col m-10 space-y-2">
           <h2 className="text-gmlime-light text-2xl mb-10">{action.title}</h2>
           <img></img>
           <div className="flex flex-row"></div>
