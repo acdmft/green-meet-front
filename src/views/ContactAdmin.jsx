@@ -44,6 +44,23 @@ function ContactAdmin() {
               </span>
             )}
           </div>
+          <div className="flex flex-col w-60 md:w-96">
+            <label htmlFor="email">Email</label>
+            <input
+              name="email"
+              className="border-2 rounded"
+              {...register("email", {
+                required: true,
+                maxLength: 100,
+                pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i,
+              })}
+            />
+            {errors.email && (
+              <span className="w-full text-red-600 italic text-xs">
+                Please enter a valid email
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex flex-col w-60 md:w-96">
           <label htmlFor="description">Commentaire</label>
