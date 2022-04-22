@@ -52,14 +52,16 @@ function RegisterForm(props) {
   return (
     <div>
       <form
-        className="flex flex-col mx-auto items-center my-16"
+        className="flex flex-col mx-auto items-center my-12"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex flex-col lg:grid md:grid-rows-3 lg:grid-flow-col lg:gap-4 md:w-1/2 mb-12 space-x-8">
-          <div className="flex flex-col pl-8">
-            <label htmlFor="email">Email</label>
-            <input
+        <div className="flex flex-col lg:grid md:grid-rows-3 lg:grid-flow-col lg:gap-4 md:w-2/3 mb-12 ">
+          
+          <div className="flex flex-col">
+            <label className="font-bold" htmlFor="email">Email</label>
+            <input 
               name="email"
+              type="email"
               className="border-2 rounded"
               {...register("email", {
                 required: true,
@@ -75,7 +77,7 @@ function RegisterForm(props) {
           </div>
           {/* **** PASSWORD INPUT *****/}
           <div className="flex flex-col">
-            <label htmlFor="password">Mot de passe</label>
+            <label className="font-bold" htmlFor="password">Mot de passe</label>
             <input
               className="border-2 rounded"
               type="password"
@@ -90,7 +92,7 @@ function RegisterForm(props) {
           </div>
           {/* **** CONFIRM PASSWORD INPUT *****/}
           <div className="flex flex-col">
-            <label htmlFor="confirmPassword">Confirmez votre mot de passe</label>
+            <label className="font-bold" htmlFor="confirmPassword">Confirmez votre mot de passe</label>
             <input
               className="border-2 rounded"
               type="password"
@@ -106,8 +108,8 @@ function RegisterForm(props) {
               <p> Le mot de passe et la confirmation ne correspondent pas!</p>
             )}
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="lastName">Nom</label>
+          <div className="flex flex-col w-auto">
+            <label className="font-bold" htmlFor="lastName">Nom</label>
             <input
               className="border-2 rounded"
               name="lastName"
@@ -120,8 +122,8 @@ function RegisterForm(props) {
             )}
           </div>
           <div className="flex flex-col">
-            <label htmlFor="firstName">Prénom</label>
-            <input
+            <label className="font-bold" htmlFor="firstName">Prénom</label>
+            <input 
               className="border-2 rounded"
               name="firstName"
               {...register("firstName", { required: true })}
@@ -133,7 +135,7 @@ function RegisterForm(props) {
             )}
           </div>
           <div className="flex flex-col">
-            <label htmlFor="city">Ville</label>
+            <label className="font-bold" htmlFor="city">Ville</label>
             <input
               className="border-2 rounded"
               name="city"

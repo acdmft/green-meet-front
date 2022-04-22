@@ -11,7 +11,7 @@ function Register() {
         </h1>
       </div>
       <h3
-        className="text-center my-11 text-sm md:text-lg font-bold"
+        className="text-center my-12 text-sm md:text-lg font-bold"
         id="contenu"
       >
         Connectez-vous maintenant et rejoignez la communauté

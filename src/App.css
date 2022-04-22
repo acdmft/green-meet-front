@@ -98,11 +98,19 @@
   background-position: 0% 50%;
 }
 .registerPage {
-  background-image: url("../public/img/plasticpoub.jpg") ;
-  background-position: cover;
+background-image: url(../public/img/undraw3.svg);
+background-size: 25rem;
+background-repeat: no-repeat;
+background-position: top left;
+
+
 
 }
 .contactPage {
-  background-image: url("../public/img/plasticpoub.jpg") ;
-  background-position: cover;
+  /* background-color: rgba(197, 198, 183, 0.772); */
+  background-image: url("../public/img/undraw7.svg");
+
+  background-size: 20rem;
+  background-position: 95% 40%;
+  background-repeat: no-repeat;
 }
