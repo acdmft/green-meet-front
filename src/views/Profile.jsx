@@ -6,6 +6,7 @@ import ActionCard from "../components/ActionCard";
 function Profile() {
   const [user, setUser] = useState([]);
   const [actions, setActions] = useState([]);
+  const [organiseActions, setOrganiseActions] = useState([]);
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
@@ -18,12 +19,18 @@ function Profile() {
   }, []);
 
   useEffect(() => {
-    console.log("OK");
     fetch("/account/actions")
       .then((res) => res.json())
       .then((res) => {
         if (res.data) {
           setActions([res.data]);
+          console.log(res.data);
+          fetch(`/actions/organiser/${res.data[0].user_id}`)
+            .then((res) => res.json())
+            .then((res) => {
+              // console.log("DATA", res.data);
+              setOrganiseActions([res.data]);
+            });
         }
       });
   }, [toggle]);
@@ -46,25 +53,37 @@ function Profile() {
           <p>Email : {user[0].email}</p>
         </div>
       )}
-      <div className="mx-auto">
-        {console.log("ACTION", actions)}
-
+      <div className="flex flex-col justify-center mx-auto items-center m-11">
+        <h2 className="text-3xl">Actions auxquelles je participe : </h2>
+      </div>
+      <div className="mx-11 flex flex-col">
         {actions.length !== 0 &&
-          actions.map((action, index) => {
+          actions[0].map((action, index) => {
             return (
-              <div className="mx-11 flex flex-col">
-                <ActionCard
-                  id={action[0].action_id}
-                  key={index}
-                  title={action[0].title}
-                  description={action[0].description}
-                />
-              </div>
+              <ActionCard
+                id={action.action_id}
+                key={index}
+                title={action.title}
+                description={action.description}
+              />
             );
           })}
       </div>
       <div className="flex flex-col justify-center mx-auto items-center m-11">
-        <h2 className="text-3xl">Vos actions</h2>
+        <h2 className="text-3xl">Les actions que j'organise : </h2>
+      </div>
+      <div className="mx-11 flex flex-col">
+        {organiseActions.length !== 0 &&
+          organiseActions.map((action, index) => {
+            return (
+              <ActionCard
+                id={action.action_id}
+                key={index}
+                title={action.title}
+                description={action.description}
+              />
+            );
+          })}
       </div>
     </div>
   );
