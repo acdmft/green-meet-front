@@ -9,34 +9,36 @@ function Profile() {
   const [organiseActions, setOrganiseActions] = useState([]);
   const [toggle, setToggle] = useState(false);
 
+  // Voir promiseAll dans weather App Github Julie
   useEffect(() => {
     fetch("/account")
       .then((res) => res.json())
       .then((res) => {
         setUser([res.data]);
-        setToggle(!toggle);
+        fetch("/account/actions")
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.data) {
+              setActions([res.data]);
+            }
+            // console.log(res.data);
+            fetch(`/actions/organiser/${res.data[0].user_id}`)
+              .then((res) => res.json())
+              .then((res) => {
+                if (res.data) {
+                  setOrganiseActions([res.data]);
+                }
+              });
+          });
       });
   }, []);
 
-  useEffect(() => {
-    fetch("/account/actions")
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.data) {
-          setActions([res.data]);
-          console.log(res.data);
-          fetch(`/actions/organiser/${res.data[0].user_id}`)
-            .then((res) => res.json())
-            .then((res) => {
-              // console.log("DATA", res.data);
-              setOrganiseActions([res.data]);
-            });
-        }
-      });
-  }, [toggle]);
-
   const RenderNoActions = () => {
-    return <p>Vous n'êtes inscrit à aucune action</p>;
+    return (
+      <div>
+        <p>Vous n'êtes inscrit à aucune action</p>
+      </div>
+    );
   };
 
   const RenderUser = () => {
