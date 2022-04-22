@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 // Components
 import Button from "../components/Button";
 import Title from "../components/Title";
-// toastify 
+// toastify
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -35,7 +35,9 @@ function AddAction() {
       endDate: endDate,
       endTime: endTime,
       // convert city input into string with "-" instead of " "
-      city: data.city.split(/[\s-]+/).reduce((prev, curr)=> `${prev.toLowerCase()}-${curr.toLowerCase()}`),
+      city: data.city
+        .split(/[\s-]+/)
+        .reduce((prev, curr) => `${prev.toLowerCase()}-${curr.toLowerCase()}`),
       description: data.description,
       // should be taken from input value
       type: "ramassage",
@@ -48,16 +50,18 @@ function AddAction() {
       },
       body: JSON.stringify(finalData),
     })
-    .then((res) => {
-      if (res.status === 201) {
-        toast.success("L'action est créée !");
-        navigate("/");
-      } else {
-        // console.log(res.message ? 'aaa': 'bbb')
-        toast.error("Quelque chose s'est mal passé, réessayez plus tard!");
-      }
-    })
-    .catch((err) => toast.error("Quelque chose s'est mal passé, réessayez plus tard!"));
+      .then((res) => {
+        if (res.status === 201) {
+          toast.success("L'action est créée !");
+          navigate("/");
+        } else {
+          // console.log(res.message ? 'aaa': 'bbb')
+          toast.error("Quelque chose s'est mal passé, réessayez plus tard!");
+        }
+      })
+      .catch((err) =>
+        toast.error("Quelque chose s'est mal passé, réessayez plus tard!")
+      );
     // console.log(beginDate, beginTime, endDate, endTime);
     console.log(data);
   };
@@ -65,7 +69,9 @@ function AddAction() {
   return (
     <div className="addAction">
       <div className="pt-24">
-        <h1 className="text-center text-white text-lg md:text-xl lg:text-3xl">Organiser une action</h1>
+        <h1 className="text-center text-white text-lg md:text-xl lg:text-3xl">
+          Organiser une action
+        </h1>
       </div>
       <div id="contenu" className="mt-16">
         {/* FORM */}
@@ -76,19 +82,21 @@ function AddAction() {
           {/* Titre */}
           <div className="w-full gap-4 lg:w-1/2 mb-10 space-y-10">
             <div className="flex flex-col relative">
-              <label className="text-white" htmlFor="title">Titre de l'action</label>
+              <label className="text-white" htmlFor="title">
+                Titre de l'action
+              </label>
               <input
                 name="title"
                 className="border-2 rounded"
                 {...register("title", {
                   required: true,
-                  maxLength: 20,
+                  maxLength: 30,
                   minLength: 5,
                 })}
               />
               {errors.title && (
                 <span className="w-full text-red-600 italic text-xs absolute top-14">
-                  Merci d'indiquer le titre de votre action
+                  Merci d'indiquer le titre de votre action en 5 à 30 caractères
                 </span>
               )}
             </div>
@@ -192,7 +200,9 @@ function AddAction() {
             {/* DATE Horaires */}
             <div className="flex flex-col md:flex-row w-full place-content-evenly md:space-x-1 space-y-4 md:space-y-0">
               <div className="flex flex-col">
-                <label className="text-white" htmlFor="begin">Date de début</label>
+                <label className="text-white" htmlFor="begin">
+                  Date de début
+                </label>
                 <input
                   name="begin"
                   id="begin"
@@ -208,7 +218,9 @@ function AddAction() {
                 )}
               </div>
               <div className="flex flex-col ">
-                <label className="text-white" htmlFor="end">Date de fin</label>
+                <label className="text-white" htmlFor="end">
+                  Date de fin
+                </label>
                 <input
                   name="end"
                   id="end"
@@ -227,7 +239,9 @@ function AddAction() {
 
             {/* DESCRIPTION */}
             <div className="flex flex-col relative ">
-              <label className="text-white" htmlFor="description">Description</label>
+              <label className="text-white" htmlFor="description">
+                Description
+              </label>
               <textarea
                 rows="12"
                 className="border-2 rounded h-full"
@@ -248,8 +262,7 @@ function AddAction() {
             </div>
           </div>
           <div className="mb-10">
-
-          <Button type="submit">Créer l'action</Button>
+            <Button type="submit">Créer l'action</Button>
           </div>
         </form>
       </div>
