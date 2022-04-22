@@ -19,7 +19,7 @@ function RegisterForm(props) {
     formState: { errors },
     watch,
   } = useForm();
-  // watch password and confirm password fields 
+  // watch password and confirm password fields
   const watchPassword = watch("password", props.password);
   const watchConfirmPassword = watch("confirmPassword", props.confirmPassword);
 
@@ -27,7 +27,9 @@ function RegisterForm(props) {
     // remove confirmPassword key, value form request to pass validation
     delete data.confirmPassword;
     // convert city input into string with "-" instead of " "
-    data.city = data.city.split(/[\s-]+/).reduce((prev, curr)=> `${prev.toLowerCase()}-${curr.toLowerCase()}`);
+    data.city = data.city
+      .split(/[\s-]+/)
+      .reduce((prev, curr) => `${prev.toLowerCase()}-${curr.toLowerCase()}`);
     fetch("/register", {
       method: "POST",
       headers: {
@@ -56,10 +58,11 @@ function RegisterForm(props) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col lg:grid md:grid-rows-3 lg:grid-flow-col lg:gap-4 md:w-2/3 mb-12 ">
-          
           <div className="flex flex-col">
-            <label className="font-bold" htmlFor="email">Email</label>
-            <input 
+            <label className="font-bold" htmlFor="email">
+              Email
+            </label>
+            <input
               name="email"
               type="email"
               className="border-2 rounded"
@@ -77,7 +80,9 @@ function RegisterForm(props) {
           </div>
           {/* **** PASSWORD INPUT *****/}
           <div className="flex flex-col">
-            <label className="font-bold" htmlFor="password">Mot de passe</label>
+            <label className="font-bold" htmlFor="password">
+              Mot de passe
+            </label>
             <input
               className="border-2 rounded"
               type="password"
@@ -92,7 +97,9 @@ function RegisterForm(props) {
           </div>
           {/* **** CONFIRM PASSWORD INPUT *****/}
           <div className="flex flex-col">
-            <label className="font-bold" htmlFor="confirmPassword">Confirmez votre mot de passe</label>
+            <label className="font-bold" htmlFor="confirmPassword">
+              Confirmez votre mot de passe
+            </label>
             <input
               className="border-2 rounded"
               type="password"
@@ -109,7 +116,9 @@ function RegisterForm(props) {
             )}
           </div>
           <div className="flex flex-col w-auto">
-            <label className="font-bold" htmlFor="lastName">Nom</label>
+            <label className="font-bold" htmlFor="lastName">
+              Nom
+            </label>
             <input
               className="border-2 rounded"
               name="lastName"
@@ -122,8 +131,10 @@ function RegisterForm(props) {
             )}
           </div>
           <div className="flex flex-col">
-            <label className="font-bold" htmlFor="firstName">Prénom</label>
-            <input 
+            <label className="font-bold" htmlFor="firstName">
+              Prénom
+            </label>
+            <input
               className="border-2 rounded"
               name="firstName"
               {...register("firstName", { required: true })}
@@ -135,7 +146,9 @@ function RegisterForm(props) {
             )}
           </div>
           <div className="flex flex-col">
-            <label className="font-bold" htmlFor="city">Ville</label>
+            <label className="font-bold" htmlFor="city">
+              Ville
+            </label>
             <input
               className="border-2 rounded"
               name="city"
