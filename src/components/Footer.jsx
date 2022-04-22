@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <div className="text-center m-2">
@@ -18,13 +20,13 @@ const pages = [
 
 const navLinks = pages.map((page, index) => {
   return (
-    <a
+    <Link
       key={index}
-      href={page.href}
+      to={page.href}
       className="text-white font-semibold hover:text-gmlime-light text-xs md:text-sm  ease-in-out transform translate hover:transition-all duration-500"
     >
       {page.name}
-    </a>
+    </Link>
   );
 });
 
