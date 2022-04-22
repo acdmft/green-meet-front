@@ -20,15 +20,15 @@ function Profile() {
           .then((res) => {
             if (res.data) {
               setActions([res.data]);
+              fetch(`/actions/organiser/${res.data[0].user_id}`)
+                .then((res) => res.json())
+                .then((res) => {
+                  if (res.data) {
+                    setOrganiseActions([res.data]);
+                  }
+                });
             }
             // console.log(res.data);
-            fetch(`/actions/organiser/${res.data[0].user_id}`)
-              .then((res) => res.json())
-              .then((res) => {
-                if (res.data) {
-                  setOrganiseActions([res.data]);
-                }
-              });
           });
       });
   }, []);
