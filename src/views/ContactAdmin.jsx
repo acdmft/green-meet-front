@@ -12,6 +12,12 @@ function ContactAdmin() {
 
   return (
     <div className="contactPage">
+      <div className="pt-24">
+        <h1 className="text-center text-lg md:text-xl lg:text-3xl">
+          Contacter l'administrateur du site
+        </h1>
+        </div>
+    
     <div id="contenu">
       <form
         className="flex flex-col mx-auto items-center pt-10"
@@ -82,12 +88,13 @@ function ContactAdmin() {
             </span>
           )}
         </div>
-        <div className="mt-10 mb-10">
+        <div className="my-5">
           <Button type="submit">Soumettre</Button>
         </div>
       </form>
     </div>
     </div>
+  
     
   );
 }
