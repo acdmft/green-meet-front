@@ -1,4 +1,4 @@
-import { React, useContext, createContext, useState } from "react";
+import { React, useContext, createContext, useState, useEffect } from "react";
 
 import "./App.css";
 
@@ -11,7 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // React-router-dom
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Views
 import Homepage from "./views/Homepage";
@@ -28,7 +28,22 @@ import Profile from "./views/Profile";
 // Context
 export const AuthContext = createContext();
 
+// Private route
+const PrivateRoute = ({ children }) => {
+  const context = useContext(AuthContext);
+  return context.isAuthenticated ? children : <Navigate to="/login" />;
+};
+
 function App() {
+  useEffect(() => {
+    fetch("/account/isLogged")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log("CONNECTE", res);
+        setIsAuthenticated(true);
+      });
+  }, []);
+
   const handleClick = () => {
     console.log("COUCOU");
   };
@@ -49,8 +64,25 @@ function App() {
               <Route exact path="/contributors" element={<Contributors />} />
               <Route exact path="/mentions" element={<Mentions />} />
               <Route exact path="/contact" element={<ContactAdmin />} />
-              <Route exact path="/addAction" element={<AddAction />} />
-              <Route exact path="/profile" element={<Profile />} />
+              <Route
+                exact
+                path="/addAction"
+                element={
+                  <PrivateRoute>
+                    <AddAction />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path="/profile"
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/profile/:id" element={<Profile />} />
             </Routes>
           </div>
           <div className="bg-gray-800">

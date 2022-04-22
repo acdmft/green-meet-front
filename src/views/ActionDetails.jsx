@@ -137,7 +137,8 @@ function ActionDetails(props) {
     }
   };
 
-  if (isLoaded) {
+  if (user) {
+    console.log(user);
     return RenderActions();
   } else {
     <div className="ml-96 mt-52 loader flex flex-col items-center">
