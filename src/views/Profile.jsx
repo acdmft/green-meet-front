@@ -18,6 +18,7 @@ function Profile() {
   }, []);
 
   useEffect(() => {
+    console.log("OK");
     fetch("/account/actions")
       .then((res) => res.json())
       .then((res) => {
