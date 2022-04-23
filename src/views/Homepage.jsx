@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ActionCard from "../components/ActionCard";
 import ArrowButton from "../components/ArrowButton";
 import Title from "../components/Title";
 
 function Homepage() {
+  let navigate = useNavigate();
+
   const [actions, setActions] = useState([]);
   useEffect(() => {
     fetch("/actions")
@@ -16,7 +18,7 @@ function Homepage() {
   }, []);
 
   const handleClick = () => {
-    Navigate("/actions");
+    navigate("/actions");
   };
 
   return (
