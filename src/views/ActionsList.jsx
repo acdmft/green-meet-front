@@ -20,7 +20,9 @@ function ActionsList() {
   } = useForm();
 
   const onSubmit = (data) => {
-    let convertedInput = data.city.split(/[\s-]+/).reduce((prev, curr)=> `${prev.toLowerCase()}-${curr.toLowerCase()}`);
+    let convertedInput = data.city
+      .split(/[\s-]+/)
+      .reduce((prev, curr) => `${prev.toLowerCase()}-${curr.toLowerCase()}`);
     setUserInput(convertedInput);
   };
 
@@ -57,6 +59,9 @@ function ActionsList() {
       return <p>Aucune action enregistrée</p>;
     }
     return actions
+      .filter((action) => {
+        return action.status === 0;
+      })
       .slice(0, 12)
       .map((action, index) => (
         <ActionCard
@@ -89,14 +94,18 @@ function ActionsList() {
       );
     }
 
-    return filteredActions.map((action) => (
-      <ActionCard
-        id={action.action_id}
-        key={action.action_id}
-        title={action.title}
-        description={action.description}
-      />
-    ));
+    return filteredActions
+      .filter((action) => {
+        return action.status === 0;
+      })
+      .map((action) => (
+        <ActionCard
+          id={action.action_id}
+          key={action.action_id}
+          title={action.title}
+          description={action.description}
+        />
+      ));
   };
 
   return (

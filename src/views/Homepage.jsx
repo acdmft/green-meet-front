@@ -47,16 +47,21 @@ function Homepage() {
       <div className="flex justify-center mx-6 mb-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {actions &&
-            actions.slice(0, 3).map((action) => {
-              return (
-                <ActionCard
-                  id={action.action_id}
-                  key={action.action_id}
-                  title={action.title}
-                  description={action.description}
-                />
-              );
-            })}
+            actions
+              .filter((action) => {
+                return action.status === 0;
+              })
+              .slice(0, 3)
+              .map((action) => {
+                return (
+                  <ActionCard
+                    id={action.action_id}
+                    key={action.action_id}
+                    title={action.title}
+                    description={action.description}
+                  />
+                );
+              })}
         </div>
       </div>
     </>
