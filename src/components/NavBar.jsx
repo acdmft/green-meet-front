@@ -13,6 +13,8 @@ function NavBar() {
   // logout user if he clicked on 'Deconnexion'
   const handleClick = (cl) => {
     if (cl.name !== "Déconnexion") {
+      // close menu 
+      setMenuOpen(false);
       return;
     }
     fetch("logout")
@@ -45,6 +47,7 @@ function NavBar() {
         key={index}
         className="text-white font-semibold hover:text-gmlime-light ease-in-out transform translate hover:transition-all duration-500"
         to={page.href}
+        onClick={(()=> handleClick(page))}
       >
         {page.name}
       </Link>
@@ -77,6 +80,7 @@ function NavBar() {
             <a
               className="text-white font-semibold hover:text-gmlime-light"
               href="#contenu"
+              onClick={()=>setMenuOpen(false)}
             >
               Aller au contenu
             </a>
@@ -93,7 +97,7 @@ function NavBar() {
 const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
   <div className="flex items-center justify-between h-16">
     <div className="flex items-center">
-      <Link to="/">
+      <Link to="/" onClick={()=>setMenuOpen(false)}>
         <img src="../../img/logo4.jpeg" className="h-16 w-28 m-0 p-0" />
       </Link>
     </div>
@@ -102,10 +106,11 @@ const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
         <div className="space-x-10">
           <a
             className="text-white font-semibold hover:text-gmlime-light ease-in-out transform translate hover:transition-all duration-500"
-            href="#contenu"
+            href="#contenu" 
           >
             Aller au contenu
           </a>
+          
           {navLinks}
         </div>
         <div className="space-x-6">{navConnexion}</div>
