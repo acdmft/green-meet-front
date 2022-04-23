@@ -82,8 +82,13 @@
 }
 .actionsList {
  background-image: url("../public/img/undrawlistactions.svg");
-  background-size: cover;
+  /* background-size: cover;
   background-repeat: no-repeat;
+  background-size: 90rem;
+  background-position: right top; */
+  background-size: 25rem;
+background-repeat: no-repeat;
+background-position: top left;
 }
 
 .addAction {
@@ -115,11 +120,10 @@ background-position: top left;
   background-repeat: no-repeat;
 }
 
-.actionsDetail {
-  background-image: url("../public/img/undrawactionsdetail.svg");
+/* .actionsDetail {
+  background-image: url("../public/img/");
   background-repeat: no-repeat;
-  background-size: 20rem;
-  background-position: 65% 5%;
-}
+
+} */
 
 
