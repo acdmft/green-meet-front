@@ -140,12 +140,14 @@ function Profile(props) {
                 })
                 .map((action, index) => {
                   return (
-                    <ActionCard
-                      id={action.action_id}
-                      key={index}
-                      title={action.title}
-                      description={action.description}
-                    />
+                    <div className="lg:w-2/3 mx-auto">
+                      <ActionCard
+                        id={action.action_id}
+                        key={index}
+                        title={action.title}
+                        description={action.description}
+                      />
+                    </div>
                   );
                 })}
           </div>
@@ -182,7 +184,7 @@ function Profile(props) {
                 })
                 .map((action, index) => {
                   return (
-                    <div className="flex flex-col relative">
+                    <div className="flex flex-col relative lg:w-2/3 mx-auto">
                       <ActionCard
                         id={action.action_id}
                         key={index}
@@ -190,7 +192,7 @@ function Profile(props) {
                         description={action.description}
                       />
                       <button
-                        className="text-center border bg-red-600 w-32 h-10 rounded-full absolute font-bold right-0"
+                        className="text-center border bg-red-600 w-28 h-8 rounded absolute font-bold right-10 top-1 hover:bg-black hover:text-white"
                         onClick={() => handleClick(action.action_id)}
                       >
                         Annuler
