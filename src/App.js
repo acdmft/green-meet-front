@@ -24,6 +24,7 @@ import ContactAdmin from "./views/ContactAdmin";
 import ActionDetails from "./views/ActionDetails";
 import AddAction from "./views/AddAction";
 import Profile from "./views/Profile";
+import ModifyAction from "./views/ModifyAction";
 
 // Context
 export const AuthContext = createContext();
@@ -62,6 +63,10 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Homepage />} />
               <Route path="/actions" element={<ActionsList />} />
+              <Route
+                path="/actions/modify/:action_id"
+                element={<ModifyAction />}
+              />
               <Route path="/actions/:id" element={<ActionDetails />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/register" element={<Register />} />

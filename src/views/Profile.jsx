@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import ActionCard from "../components/ActionCard";
@@ -10,7 +10,8 @@ function Profile(props) {
   const [user, setUser] = useState(null);
   const [actions, setActions] = useState([]);
   const [organiseActions, setOrganiseActions] = useState([]);
-  const [toggle, setToggle] = useState(false);
+
+  let navigate = useNavigate();
 
   // Voir promiseAll dans weather App Github Julie
   useEffect(() => {
@@ -56,7 +57,7 @@ function Profile(props) {
   };
 
   const modifyAction = (action_id) => {
-    console.log(action_id);
+    navigate(`/actions/modify/${action_id}`);
   };
 
   const RenderNoActions = () => {
