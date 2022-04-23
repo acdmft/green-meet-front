@@ -38,9 +38,7 @@ function Profile(props) {
       });
   }, []);
 
-  const handleClick = (action_id) => {
-    console.log(action_id);
-
+  const deleteAction = (action_id) => {
     fetch(`/actions/${action_id}`, {
       method: "DELETE",
     })
@@ -55,6 +53,10 @@ function Profile(props) {
         toast.error("Quelque chose s'est mal passé, réessayez plus tard !");
         console.log(err);
       });
+  };
+
+  const modifyAction = (action_id) => {
+    console.log(action_id);
   };
 
   const RenderNoActions = () => {
@@ -192,10 +194,16 @@ function Profile(props) {
                         description={action.description}
                       />
                       <button
-                        className="text-center border bg-red-600 w-28 h-8 rounded absolute font-bold right-10 top-1 hover:bg-black hover:text-white"
-                        onClick={() => handleClick(action.action_id)}
+                        className="text-center bg-red-600 w-28 h-8 rounded absolute font-bold right-10 top-1 border hover:opacity-90 hover:border-black transform duration-500 border-white"
+                        onClick={() => deleteAction(action.action_id)}
                       >
                         Annuler
+                      </button>
+                      <button
+                        className="text-center bg-yellow-500 w-28 h-8 rounded absolute font-bold right-44 top-1 border hover:opacity-90 hover:border-black transform duration-500 border-white"
+                        onClick={() => modifyAction(action.action_id)}
+                      >
+                        Modifier
                       </button>
                     </div>
                   );
