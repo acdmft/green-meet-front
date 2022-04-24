@@ -61,7 +61,7 @@ function ContactForm() {
             )}
           </div>
         </div>
-        <ArrowButton type="submit">Envoyer le message</ArrowButton>
+        <ArrowButton className="pt-2" type="submit">Envoyer le message</ArrowButton>
       </form>
     </div>
   );

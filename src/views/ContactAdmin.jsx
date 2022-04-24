@@ -54,7 +54,7 @@ function ContactAdmin() {
           <div className="flex flex-col mx-8 w-60 md:w-96">
             <label className="font-bold" htmlFor="lastName">Nom</label>
             <input
-              className="border-2"
+              className="border-2 rounded"
               name="lastName"
               {...register("lastName", { required: true })}
             />
@@ -67,7 +67,7 @@ function ContactAdmin() {
           <div className="flex flex-col w-60 md:w-96">
             <label className="font-bold" htmlFor="firstName">Prénom</label>
             <input
-              className="border-2"
+              className="border-2 rounded"
               name="firstName"
               {...register("firstName", { required: true })}
             />
@@ -99,7 +99,7 @@ function ContactAdmin() {
           <label className="font-bold" htmlFor="description">Commentaire</label>
           <textarea
             rows="15"
-            className="border-2 h-full"
+            className="border-2 h-full rounded"
             {...register("text", {
               required: true,
               max: 200,
