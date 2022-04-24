@@ -113,10 +113,10 @@ background-position: top left;
 
 }
 .contactPage {
-  /* background-color: rgba(197, 198, 183, 0.772); */
-  background-image: url("../public/img/undraw7.svg");
+ 
+  background-image: url("../public/img/undrawAdmin.svg");
   background-size: 20rem;
-  background-position: 95% 40%;
+  background-position: center right;
   background-repeat: no-repeat;
 }
 

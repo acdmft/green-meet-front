@@ -54,7 +54,7 @@ function RegisterForm(props) {
   return (
     <div>
       <form
-        className="flex flex-col mx-auto items-center my-12"
+        className="flex flex-col mx-auto items-center my-12 pt-14 font-green"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col lg:grid md:grid-rows-3 lg:grid-flow-col lg:gap-4 md:w-2/3 mb-12 ">
