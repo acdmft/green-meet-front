@@ -40,8 +40,8 @@ function RegisterForm(props) {
       .then((data) => {
         if (data.status === 201) {
           toast.success("Le nouveau compte est créé !");
-          context.setIsAuthenticated(true);
-          return navigate("/");
+          // context.setIsAuthenticated(true);
+          return navigate("/login");
         } else {
           return toast.error("L'email existe déjà");
         }
