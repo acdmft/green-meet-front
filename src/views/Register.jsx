@@ -7,7 +7,7 @@ function Register() {
     <div className="registerPage">
       <div className="bg-white bg-opacity-50 sm:bg-transparent h-52 flex flex-col space-y-5">
         <div className="pt-24">
-          <h1 className="text-center font-bold md:font-normal text-2xl lg:text-3xl text-blue-500">
+          <h1 className="text-center text-2xl font-bold md:font-normal md:text-3xl text-blue-500">
             S'enregistrer
           </h1>
         </div>
