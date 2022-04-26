@@ -28,10 +28,12 @@ function LoginForm() {
       },
       body: JSON.stringify(data),
     })
+      .then((res) => res.json())
       .then((res) => {
-        if (res.status >= 200 && res.status < 400) {
-          toast.success("Tu es connecté!");
+        if (res) {
+          // toast.success("Tu es connecté!");
           context.setIsAuthenticated(true);
+          context.setUserInfo(res)
           navigate("/");
         } else {
           toast.error("Identifiant ou mot de passe incorrect");

@@ -54,8 +54,11 @@ function App() {
   };
   // isAuthenticated state (goes in context value)
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, setIsAuthenticated, userInfo, setUserInfo }}
+    >
       <BrowserRouter classname="relative">
         <div className="flex flex-col justify-between min-h-screen">
           <NavBar />

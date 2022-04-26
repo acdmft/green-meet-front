@@ -40,8 +40,8 @@ function RegisterForm(props) {
       .then((data) => {
         if (data.status === 201) {
           toast.success("Le nouveau compte est créé !");
-          // context.setIsAuthenticated(true);
-          return navigate("/login");
+          context.setIsAuthenticated(true);
+          return navigate("/");
         } else {
           return toast.error("L'email existe déjà");
         }
@@ -58,7 +58,7 @@ function RegisterForm(props) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col lg:grid md:grid-rows-3 lg:grid-flow-col lg:gap-4 md:w-2/3 mb-12">
-          <div className="flex flex-col lg:w-96">
+          <div className="flex flex-col">
             <label className="font-bold" htmlFor="email">
               Email
             </label>
@@ -79,7 +79,7 @@ function RegisterForm(props) {
             )}
           </div>
           {/* **** PASSWORD INPUT *****/}
-          <div className="flex flex-col lg:w-96">
+          <div className="flex flex-col">
             <label className="font-bold" htmlFor="password">
               Mot de passe
             </label>
@@ -96,7 +96,7 @@ function RegisterForm(props) {
             )}
           </div>
           {/* **** CONFIRM PASSWORD INPUT *****/}
-          <div className="flex flex-col lg:w-96">
+          <div className="flex flex-col">
             <label className="font-bold" htmlFor="confirmPassword">
               Confirmez votre mot de passe
             </label>

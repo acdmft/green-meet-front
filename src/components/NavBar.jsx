@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 function NavBar() {
   // context isAuthenticat
   const context = useContext(AuthContext);
+  console.log(context.userInfo);
   // state of the menu
   const [menuOpen, setMenuOpen] = useState(false);
   // logout user if he clicked on 'Deconnexion'
@@ -34,7 +35,7 @@ function NavBar() {
   const connexionLinks = context.isAuthenticated
     ? [
         { name: "Déconnexion", href: "" },
-        { name: "Profil", href: "/profile" },
+        { name: `Profil ${context.userInfo.last_name}`, href: "/profile" },
       ]
     : [
         { name: "Connexion", href: "/login" },

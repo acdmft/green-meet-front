@@ -90,7 +90,7 @@ function AddAction() {
                 className="border-2 rounded"
                 {...register("title", {
                   required: true,
-                  maxLength: 30,
+                  maxLength: 70,
                   minLength: 5,
                 })}
               />
