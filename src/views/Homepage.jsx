@@ -80,7 +80,7 @@ function Homepage() {
       {/* <div className="text-right m-6">
         <Link to="/actions">Je recherche une action dans ma ville</Link>
       </div> */}
-      <div className="text-right mr-10 mb-11">
+      <div className="text-right mr-10 mb-11 mx-10">
         <ArrowButton onClick={handleClick}>
           Je recherche une action près de chez moi
         </ArrowButton>

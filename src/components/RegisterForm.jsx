@@ -57,7 +57,7 @@ function RegisterForm(props) {
         className="flex flex-col items-center my-8"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex flex-col lg:grid md:grid-rows-3 lg:grid-flow-col lg:gap-4 md:w-2/3 mb-12">
+        <div className="flex flex-col md:grid md:grid-rows-3 md:grid-cols-2 gap-3 md:w-2/3 mb-12">
           <div className="flex flex-col">
             <label className="font-bold" htmlFor="email">
               Email
@@ -161,9 +161,8 @@ function RegisterForm(props) {
             )}
           </div>
         </div>
-        
+
         <Button type="submit">S'enregistrer</Button>
-        
       </form>
     </div>
   );

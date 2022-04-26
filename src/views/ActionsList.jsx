@@ -118,7 +118,7 @@ function ActionsList() {
     <div id="contenu" className="flex flex-col justify-center actionsList">
       <div>
         <form
-          className="flex flex-row md:mx-auto mx-10 space-x-3 items-center w-1/2 my-10"
+          className="flex flex-row mx-auto space-x-3 items-center w-3/4 lg:w-1/2 my-10"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col w-full">
