@@ -38,10 +38,14 @@ function RegisterForm(props) {
       body: JSON.stringify(data),
     })
       .then((data) => {
+        // console.log(data.status)
         if (data.status === 201) {
-          toast.success("Le nouveau compte est créé !");
-          context.setIsAuthenticated(true);
-          return navigate("/");
+          data.json().then((data) => {
+            toast.success("Le nouveau compte est créé !");
+            context.setIsAuthenticated(true);
+            context.setUserInfo(data);
+            return navigate("/");
+          });
         } else {
           return toast.error("L'email existe déjà");
         }
@@ -58,6 +62,23 @@ function RegisterForm(props) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col md:grid md:grid-rows-3 md:grid-cols-2 gap-3 md:w-2/3 mb-12">
+          {/* *****     LAST NAME *********/}
+          <div className="flex flex-col">
+            <label className="font-bold" htmlFor="lastName">
+              Nom
+            </label>
+            <input
+              className="border-2 rounded"
+              name="lastName"
+              {...register("lastName", { required: true })}
+            />
+            {errors.lastName && (
+              <span className="w-full text-red-600 italic text-xs">
+                Champs obligatoire
+              </span>
+            )}
+          </div>
+          {/*****  USER EMAIL  *******/}
           <div className="flex flex-col">
             <label className="font-bold" htmlFor="email">
               Email
@@ -78,6 +99,23 @@ function RegisterForm(props) {
               </span>
             )}
           </div>
+
+          {/****** FIRST NAME */}
+          <div className="flex flex-col">
+            <label className="font-bold" htmlFor="firstName">
+              Prénom
+            </label>
+            <input
+              className="border-2 rounded"
+              name="firstName"
+              {...register("firstName", { required: true })}
+            />
+            {errors.firstName && (
+              <span className="w-full text-red-600 italic text-xs">
+                Champs obligatoire
+              </span>
+            )}
+          </div>
           {/* **** PASSWORD INPUT *****/}
           <div className="flex flex-col">
             <label className="font-bold" htmlFor="password">
@@ -95,6 +133,23 @@ function RegisterForm(props) {
               </span>
             )}
           </div>
+          {/* ***** **   CITY  **************/}
+          <div className="flex flex-col">
+            <label className="font-bold" htmlFor="city">
+              Ville
+            </label>
+            <input
+              className="border-2 rounded"
+              name="city"
+              {...register("city", { required: true })}
+            />
+            {errors.city && (
+              <span className="w-full text-red-600 italic text-xs">
+                Champs obligatoire
+              </span>
+            )}
+          </div>
+
           {/* **** CONFIRM PASSWORD INPUT *****/}
           <div className="flex flex-col">
             <label className="font-bold" htmlFor="confirmPassword">
@@ -113,51 +168,6 @@ function RegisterForm(props) {
             )}
             {watchConfirmPassword != watchPassword && (
               <p> Le mot de passe et la confirmation ne correspondent pas!</p>
-            )}
-          </div>
-          <div className="flex flex-col">
-            <label className="font-bold" htmlFor="lastName">
-              Nom
-            </label>
-            <input
-              className="border-2 rounded"
-              name="lastName"
-              {...register("lastName", { required: true })}
-            />
-            {errors.lastName && (
-              <span className="w-full text-red-600 italic text-xs">
-                Champs obligatoire
-              </span>
-            )}
-          </div>
-          <div className="flex flex-col">
-            <label className="font-bold" htmlFor="firstName">
-              Prénom
-            </label>
-            <input
-              className="border-2 rounded"
-              name="firstName"
-              {...register("firstName", { required: true })}
-            />
-            {errors.firstName && (
-              <span className="w-full text-red-600 italic text-xs">
-                Champs obligatoire
-              </span>
-            )}
-          </div>
-          <div className="flex flex-col">
-            <label className="font-bold" htmlFor="city">
-              Ville
-            </label>
-            <input
-              className="border-2 rounded"
-              name="city"
-              {...register("city", { required: true })}
-            />
-            {errors.city && (
-              <span className="w-full text-red-600 italic text-xs">
-                Champs obligatoire
-              </span>
             )}
           </div>
         </div>
