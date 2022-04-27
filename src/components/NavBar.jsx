@@ -1,20 +1,31 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 // isAuthenticated context
 import { AuthContext } from "../App";
 // toastify
 import { toast } from "react-toastify";
 
+// Icons
+import { FaRegUser } from "react-icons/fa";
+
 function NavBar() {
   // context isAuthenticat
   const context = useContext(AuthContext);
   console.log(context.userInfo);
+
+  // let username = "Profil";
+
+  // useEffect(() => {
+  //   context.userInfo.last_name !== undefined &&
+  //     (username = context.userInfo.last_name);
+  // }, [context]);
+
   // state of the menu
   const [menuOpen, setMenuOpen] = useState(false);
   // logout user if he clicked on 'Deconnexion'
   const handleClick = (cl) => {
     if (cl.name !== "Déconnexion") {
-      // close menu 
+      // close menu
       setMenuOpen(false);
       return;
     }
@@ -35,7 +46,16 @@ function NavBar() {
   const connexionLinks = context.isAuthenticated
     ? [
         { name: "Déconnexion", href: "" },
-        { name: `Profil ${context.userInfo.last_name}`, href: "/profile" },
+        {
+          name: (
+            <div className="flex flex-row">
+              <div className="mr-2 text-xl">{<FaRegUser />}</div>
+
+              {context.userInfo.last_name}
+            </div>
+          ),
+          href: "/profile",
+        },
       ]
     : [
         { name: "Connexion", href: "/login" },
@@ -48,7 +68,7 @@ function NavBar() {
         key={index}
         className="text-white font-semibold hover:text-gmlime-light ease-in-out transform translate hover:transition-all duration-500"
         to={page.href}
-        onClick={(()=> handleClick(page))}
+        onClick={() => handleClick(page)}
       >
         {page.name}
       </Link>
@@ -81,7 +101,7 @@ function NavBar() {
             <a
               className="text-white font-semibold hover:text-gmlime-light"
               href="#contenu"
-              onClick={()=>setMenuOpen(false)}
+              onClick={() => setMenuOpen(false)}
             >
               Aller au contenu
             </a>
@@ -98,7 +118,7 @@ function NavBar() {
 const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
   <div className="flex items-center justify-between h-16">
     <div className="flex items-center">
-      <Link to="/" onClick={()=>setMenuOpen(false)}>
+      <Link to="/" onClick={() => setMenuOpen(false)}>
         <img src="../../img/logo4.jpeg" className="h-16 w-28 m-0 p-0" />
       </Link>
     </div>
@@ -107,14 +127,14 @@ const Navbar = ({ menuOpen, setMenuOpen, navLinks, navConnexion }) => (
         <div className="space-x-10">
           <a
             className="text-white font-semibold hover:text-gmlime-light ease-in-out transform translate hover:transition-all duration-500"
-            href="#contenu" 
+            href="#contenu"
           >
             Aller au contenu
           </a>
-          
+
           {navLinks}
         </div>
-        <div className="space-x-6">{navConnexion}</div>
+        <div className="space-x-7 flex flex-row">{navConnexion}</div>
       </div>
     </nav>
     <button
