@@ -13,12 +13,12 @@ function NavBar() {
   const context = useContext(AuthContext);
   console.log(context.userInfo);
 
-  let username = "Profil";
+  // let username = "Profil";
 
-  useEffect(() => {
-    context.userInfo.last_name !== undefined &&
-      (username = context.userInfo.last_name);
-  }, [context]);
+  // useEffect(() => {
+  //   context.userInfo.last_name !== undefined &&
+  //     (username = context.userInfo.last_name);
+  // }, [context]);
 
   // state of the menu
   const [menuOpen, setMenuOpen] = useState(false);
